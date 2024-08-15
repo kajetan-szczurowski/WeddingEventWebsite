@@ -1,0 +1,55 @@
+---
+import Button from '../../components/Button.astro'
+
+---
+
+<section class = 'supplementary-wrapper'>
+    <div class = 'cant-wait'>Też nie możemy się doczekać!</div>
+    <div class = 'supplementary-info'>
+        Jeśli jest to dla Ciebie pilny temat, to możesz zadać nam pytanie.
+    </div>
+
+    <Button>
+        <a href={`/contact`}>Spytaj nas!</a>
+    </Button>
+</section>
+
+<style>
+      a{
+        text-decoration: none;
+        font-family: "EB Garamond", serif;
+        font-weight: bold;
+        font-style: normal;
+        color: white;
+        font-size: 16px;
+    }
+
+    .supplementary-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cant-wait{
+        font-size: 64px;
+        /* font-style: italic; */
+        /* font-weight: bold; */
+    }
+
+    .supplementary-info{
+        font-size: 18px;
+    }
+
+    @media(max-width: 1400px){
+        .cant-wait{
+            font-size: 48px;
+        }
+
+    }
+
+    @media(max-width: 1120px){
+        .cant-wait{
+            font-size: 36px;
+        }
+    }
+</style>

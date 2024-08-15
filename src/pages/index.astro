@@ -1,0 +1,145 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Page from '../components/Main/Page.astro';
+
+import Hero from '../components/Hero.astro';
+import ImportanQuotation from '../components/supplementary/ImportanQuotation.astro';
+// import ImageTextTwoColumns from '../components/layouts/ImageTextTwoColumns.astro';
+// import TextImageTwoColumns from '../components/layouts/TextImageTwoColumns.astro';
+
+// import { Image } from 'astro:assets';
+// import Kajetan from '../images/KajetanKopernik.webp';
+// import Diana from '../images/DianaCytat.webp';
+
+---
+
+<Layout title="Wesele! 	&#128061 &#x1F496; 	&#128023">
+	<Page pageName = 'index'>
+		<Hero></Hero>
+		<main>
+			<!-- <section>
+				<ImageTextTwoColumns>
+					<Image slot = 'image' src={Kajetan} alt = 'Zdjęcie Kajetana w stylizacji Mikołaja Kopernika' />
+					<div slot = 'text' class = 'thanks'>
+						Dziękujemy za to, że chcecie z nami być w tym szczególnym dniu!
+					</div>
+				</ImageTextTwoColumns>
+		</section>
+
+		<section>
+			<TextImageTwoColumns>
+				<Image slot = 'image' src={Diana} alt = 'Zdjęcie Diany w eleganckiej stylizacji' />
+				<div slot = 'text' class = 'thanks'>
+					Dziękujemy za to, że chcecie z nami być w tym szczególnym dniu!
+				</div>
+			</TextImageTwoColumns>
+	</section> -->
+			<section class = 'intro'>
+				Cześć! Dziękujemy za to, że chcesz z nami być w tym szczególnym dniu!
+			</section>
+
+			<br/>
+			<br/>
+
+			<section class = 'less-important-index-text intro'>
+				Na tej stronie znajdziesz wszystkie potrzebne informacje związane z naszą imprezą. Proszę, miej na uwadze, że wesele jest w trakcie organizacji, a więc część treści jeszcze nie jest dostępna i będzie uzupełniana na bieżąco.
+			</section>
+
+			<div class = 'intro'><ImportanQuotation/></div>
+
+			<section  class = 'less-important-index-text last-index-entry intro'>
+				Nasza przygoda rozpocznie się w sobotę 19 października w sali bankietowej “Prestige”. Na początek zapraszamy na ceremonię ślubu humanistycznego, gdzie poznacie naszą historię i usłyszycie nasze osobiste przysięgi. Następnie zaczynamy zabawę weselną!
+			</section>
+			
+		</main>
+	</Page>
+</Layout>
+
+<style>
+	img {
+		width: 35%;
+		height: auto;
+		border-radius: 40px;
+		border: 5px solid black;
+		}
+
+	.thanks{
+		font-size: 24px;
+		font-family: "EB Garamond", serif;
+  		font-optical-sizing: auto;
+		margin-left: 1vw;
+		margin-right: 1vw;
+	}
+
+
+	section{
+		text-align: center;
+	}
+
+
+	section:first-child{
+		font-size: 64px;
+		}
+
+
+	.less-important-index-text{
+		font-size: 42px;
+		margin-bottom: 5rem;
+	}
+
+	.last-index-entry{
+		margin-top: 5rem;
+	}
+
+	.intro{
+		opacity: 0;
+		transition: opacity 3s;
+	}
+
+	main{
+		width: 80%;
+		margin: 0 auto;
+	}
+
+	@media(max-width:700px){
+		section:first-child{
+			font-size: 48px;
+		}
+
+
+		.less-important-index-text{
+			font-size: 36px;
+			margin-bottom: 5rem;
+		}
+	}
+
+	@media(max-width:500px){
+		section:first-child{
+			font-size: 36px;
+		}
+
+
+		.less-important-index-text{
+			font-size: 24px;
+			margin-bottom: 5rem;
+		}
+	}
+
+
+	
+</style>
+
+<script>
+	
+	const observer = new IntersectionObserver(entries => {
+  		entries.forEach((entry: any) => {
+    		const intersecting = entry.isIntersecting;
+    		entry.target.style.opacity = intersecting ? "1" : "0";
+			if (intersecting) observer.unobserve(entry.target);
+  })
+})
+
+	document.querySelectorAll(".intro").forEach(input => observer.observe(input));
+
+</script>
+

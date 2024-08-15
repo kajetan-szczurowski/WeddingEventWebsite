@@ -1,0 +1,24 @@
+---
+const {foods} = Astro.props;
+
+type dishList = {
+    label: string,
+    food: string[]
+}
+---
+
+{foods.map((dishes: dishList) =>(
+    <ul>
+    <h2>{dishes.label}</h2>
+
+    {dishes.food.map((dish : string) => ( 
+        <li>
+            {dish}
+        </li>
+      ))}
+
+</ul>
+
+    ))}
+
+

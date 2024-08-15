@@ -1,0 +1,124 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Page from '../components/Main/Page.astro';
+import FoodList from '../components/supplementary/FoodList.astro';
+import { Image } from 'astro:assets';
+import Diana from '../images/DianaWino2.webp';
+
+const drinks = [{label: 'Drinki', food: [
+'Jestodpowiedź',
+'Ja to nie umiem, ale polecam Krystianai',
+'#!$%@?, szukaj krystiana',
+'argh.jpg',
+'wystarczy, że hehe obejrzysz',
+'idź się #!$%@?ć, bo studia hehe'
+]}];
+
+const snacks = [{label: 'Zimne Przekąski', food: [
+'Jestodpowiedź',
+'Ja to nie umiem, ale polecam Krystianai',
+'#!$%@?, szukaj krystiana',
+'argh.jpg',
+'wystarczy, że hehe obejrzysz',
+'idź się #!$%@?ć, bo studia hehe'
+]}];
+
+
+const dishes = [{label: 'Obiad (15:00)', food: ['Zupa jakaś', 'Drugie danie', 'Surówka twojej starej']}, 
+{label: 'I Kolacja (18:00)', food: ['Zupa jakaś', 'Drugie danie', 'Surówka twojej starej']},
+{label: 'II Kolacja (21:00)', food: ['Zupa jakaś', 'Drugie danie', 'Surówka twojej starej']},
+{label: 'III Kolacja (00:00)', food: ['Zupa jakaś', 'Drugie danie', 'Surówka twojej starej']}];
+
+const sweetTable = [{label: 'Słodki stół', food: ['Ciasto świnki w błotku',
+'Koryto ciastek',
+'bądź mną',
+'lvl 20',
+'studiuj matematykę stosowaną',
+'ćwiczenia z analizy',
+'"Macie tutaj pare całeczek, walniecie je sobie”',
+'patrzysz na tablicę',
+'nie ruszysz tego nijak',
+'zajęcia się kończą',
+'zrobię w domu, internety pomogą',
+'siadaj do kompa',
+'tricki z licbazy wolfram w ulubionych',
+'"no results found in terms of standard mathematical functions"',
+'#!$%@?ło, Wolfram nie daje rady, a ja mam dać',
+'googluj dalej',
+'Indefinite Integral Calculator.exe',
+'No solution available',
+'Idź żebrać o rozwiązanie na jakieś forum politechniczne'
+]}]
+
+---
+
+<Layout title="Welcome to Astro.">
+	<Page pageName = 'menu'>
+		<article>
+
+			<section class = 'main-food-list'>
+					<Image slot = 'image' src = {Diana} alt = 'Diana trzymająca kieliszek wina.'></Image>
+						<section class = 'food-wrapper'>
+
+							<section class = 'food-and-dessert'>
+							
+								<div>
+									<FoodList foods = {dishes} />
+								</div>
+							
+								<div>
+									<FoodList foods = {sweetTable} />
+								</div>
+
+							</section>
+						
+							<section class = 'drinks-and-snacks'>
+								<FoodList foods = {drinks} />
+								<FoodList foods = {snacks} />
+							</section>
+
+						</section>
+			</section>
+
+
+
+		</article>
+	</Page>
+</Layout>
+
+
+<style>
+	.main-food-list{
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+	}
+
+	img {
+		/* max-width: 40%; */
+		/* height: auto; */
+		max-height: 80vh; 
+		width: auto;
+	}
+
+	.food-and-dessert{
+		display: flex;
+		justify-content: space-around;
+	}
+
+	.food-wrapper{
+		width: 60%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.drinks-and-snacks {
+		display: flex;
+	}
+
+	.main-food-list{
+		/* display: flex; */
+		/* max-width: 50vw; */
+		/* flex-wrap: wrap; */
+	}
+</style>

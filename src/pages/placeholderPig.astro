@@ -1,0 +1,124 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Page from '../components/Main/Page.astro';
+import { Image } from 'astro:assets';
+import pig1 from '../images/pig1.webp';
+import pig2 from '../images/pig2.webp';
+import SupplementaryPlaceholderInfo from '../components/supplementary/SupplementaryPlaceholderInfo.astro';
+const { currentPage, pageLabel } = Astro.props;
+---
+<Layout title="Wesele! 	&#128061 &#x1F496; 	&#128023">
+	<Page pageName = {currentPage}>
+        <div class = 'header-wrapper'>
+            <h1>
+                <span class = 'page-name'>{pageLabel}</span> jest w trakcie przygotowywania, w międzyczasie zachęcamy do zapoznania się ze zdjęciami uroczych świnek!
+            </h1>
+        </div>
+        <section class = 'images-wrapper'>
+            <Image src = {pig1} alt = 'schwinia' />
+            <Image src = {pig2} alt = 'schwinia' />
+        </section>
+
+        <SupplementaryPlaceholderInfo/>
+    </Page>
+</Layout>
+
+<style>
+
+  
+
+    h1{
+        line-height: 1.2;
+        text-wrap: balance;
+        width: 50vw;
+        position: absolute;
+        top: 0;
+        left: 25vw;
+    }
+
+
+    .page-name{
+        text-transform: capitalize;
+    }
+
+    .header-wrapper{
+        /* display: flex; */
+        /* justify-content: center; */
+        position: relative;
+        margin-bottom: 12rem;
+    }
+
+    img{
+        max-width: 1000px;
+        width: 35%;
+        height: auto;
+    }
+
+    img:first-child{
+        margin-right: 1rem;
+        margin-bottom: 0;
+
+    }
+
+    .images-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media(max-width: 920px){
+        .header-wrapper{
+            margin-bottom: 15rem;
+        }
+    }
+
+    @media(max-width: 800px){
+        section{
+            flex-direction: column;
+        }
+
+        img{
+            width: 70%;
+        }
+
+        img:first-child{
+        margin-right: 0;
+        margin-bottom: 1rem;
+        }
+
+        h1{
+            font-size: 24px;
+        }
+    }
+
+    @media(max-width: 450px){
+        h1{
+            font-size: 20px;
+        }
+    }
+    
+    @media(max-width: 300px){
+        h1{
+            font-size:18px
+        }
+
+        .header-wrapper{
+            margin-bottom: 20rem;
+        }
+
+    }
+
+    @media(max-width: 210px){
+        h1{
+            font-size: 12px;
+        }
+
+        .header-wrapper{
+            margin-bottom: 10rem;
+        }
+    }
+    
+    
+    
+
+</style>

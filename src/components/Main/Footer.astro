@@ -1,0 +1,131 @@
+---
+
+const bgColor = '#9A0303';
+const textColor = 'white';
+const signatureColor = '#7D0000';
+
+const pages = [
+{label: "Strona główna", url : ''}, {label: "Plan uroczystości", url : 'agenda'}, 
+{label: "Dojazd", url : 'arrival'}, {label: "Usadzenie Gości", url : 'chairs'},
+{label: "Menu", url : 'menu'}, {label: "Kontakt", url : 'contact'},
+];
+
+import { Image } from 'astro:assets';
+import github from '../../images/github.png';
+---
+
+<footer>
+    <div class = 'footer-information'>
+        <address>
+            <h2>MIEJSCE</h2>
+            <h3>Sala bankietowa Prestige</h3>
+            <p>ul. Świdnicka 16</p>
+            <p>Marcinowice</p>
+        </address>
+
+        <address>
+            <h2>KONTAKT</h2>
+            <h3>Kajetan Szczurowski</h3>
+            <p>+48 515 930 732</p>
+            <a href = 'mailto: kajetan.szczurowski@gmail.com'>kajetan.szczurowski@gmail.com</a>
+            <h3>Diana Nawrocka</h3>
+            <p>+48 783 970 785</p>
+            <a href = 'mailto: diananawrocka942@gmail.com'>diananawrocka942@gmail.com</a>
+        </address>
+
+        <section>
+            <h2>NAWIGACJA</h2>
+            <ul>
+                {pages.map((page) => ( 
+                    <li>
+                        <a href={`/${page.url}`}>{page.label}</a>
+                    </li>
+                  ))}
+            </ul>
+        </section>
+    </div>
+    
+    <section class = 'footer-about-author'>
+        <div class = 'author-description'>
+            Web design and developement by Kajetan Szczurowski | 
+        </div>
+        <div><a href = 'https://github.com/kajetan-szczurowski' target="_blank"><Image src = {github} alt = 'Logo of github.'></a></div>
+    </section>
+</footer>
+
+<style define:vars={{ bgColor, textColor, signatureColor }}>
+    footer{
+        margin-top: 5rem;
+        width: 100%;
+        background-color: var(--bgColor);
+    }
+
+    .footer-information{
+        width: 100%;
+        background-color: var(--bgColor);
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .footer-about-author{
+        display: flex;
+        background-color: var(--signatureColor);
+    }
+
+    .footer-about-author .author-description{
+        margin-left: 5%;
+    }
+
+    .footer-about-author > *{
+        margin-top: 0.5rem;
+    }
+
+    section{
+        color: var(--textColor);
+    }
+
+    ul {
+        list-style-type: none;
+        line-height: 1.8;
+    }
+
+    a:hover{
+        text-decoration: underline;
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--textColor);
+    }
+
+    address {
+        text-decoration: none;
+        color: white;
+        font-style: normal;
+    }
+
+    h3{
+        margin-bottom: 0;
+    }
+    
+    p{
+        margin-bottom: 8px;
+        margin-top: 8px;
+    }
+
+    @media (max-width: 580px){
+        .footer-information{
+            flex-direction: column;
+            align-items: center;
+        }
+
+        address{
+            text-align: center;
+        }
+
+        ul{
+            padding: 0;
+            text-align: center;
+        }
+    }
+</style>

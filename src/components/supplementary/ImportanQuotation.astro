@@ -1,0 +1,226 @@
+---
+import { Image } from 'astro:assets';
+import Kajetan from '../../images/Kopernik.png'
+---
+
+<div class = 'quotation-wrapper'>
+    <div class = 'quotation-box'>
+        <div class = 'text-wrapper'>
+            <span class = 'quotation-sign'>„</span>
+            <span class = 'quotation-text'>Jeżeli to czytasz, to znajdujesz się w gronie szczególnych dla nas osób.</span>
+            <span class = 'quotation-sign'>”</span>
+        </div>
+
+        <div class = 'author-wrapper'>
+            <span class = 'wrong-author'>Mikołaj Kopernik</span>
+            <span class = 'correct-author'>Kajetan Szczurowski</span>
+        </div>
+
+    </div>
+
+    <Image slot = 'image' src={Kajetan} alt = 'Zdjęcie Kajetana w stylizacji Mikołaja Kopernika' />
+    <div class = 'white-box white-box-left'></div>
+    <div class = 'white-box white-box-right'></div>
+</div>
+
+<style>
+
+    span{
+        display: inline;
+    }
+
+    .text-wrapper{
+        text-align: center;
+    }
+
+    .quotation-wrapper{
+        width: 100%;
+        height: 485px;
+        display: flex;
+        align-items: flex-end;
+        position: relative;
+    }
+
+    .quotation-box{
+        width: 100%;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid black;
+        position: relative;
+    }
+
+    .quotation-text{
+        font-size: 64px;
+        text-align: center;
+        width: fit-content;
+    }
+
+    .quotation-sign{
+        font-size: 72px;
+        color: #9A0303;
+        font-weight: bold;
+    }
+
+    .author-wrapper{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        font-weight: bold;
+        font-size: 24px;
+        margin-left: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .wrong-author{
+        text-decoration: line-through;
+        margin-right: 1rem;
+    }
+
+    .correct-author{
+        color: #9A0303;
+    }
+
+    img{
+        position: absolute;
+        top: 0;
+        left: calc(50% - 85px);
+        width: 170px;
+        height: 170px;
+    }
+
+    .white-box{
+        width: 25px;
+        height: 50px;
+        position: absolute; 
+        background-color: #f1f5f9;
+        /* background-color: red; */
+
+        top: 60px;
+    }
+
+    .white-box-left{
+        left: calc(50% - 110px);
+
+    }
+    .white-box-right{
+        left: calc(50% + 85px);
+
+    }
+
+    @media(max-width: 1200px){
+
+        .quotation-text{
+            font-size: 48px;
+        }
+
+        .quotation-sign{
+            font-size: 56px;
+        }
+    }
+
+    @media(max-width: 900px){
+
+        .quotation-text{
+            font-size: 32px;
+        }
+
+        .quotation-sign{
+            font-size: 44px;
+        }
+
+        .author-wrapper{
+            font-size: 20px;
+        }
+}
+
+@media(max-width: 700px){
+
+.quotation-text{
+    font-size: 22px;
+}
+
+.quotation-sign{
+    font-size: 26px;
+}
+
+.author-wrapper{
+    font-size: 18px;
+}
+
+.quotation-wrapper{
+    height: 350px;
+}
+
+.quotation-box{
+    height: 275px;
+}
+
+
+}
+
+@media(max-width: 500px){
+
+.quotation-text{
+    font-size: 16px;
+}
+
+.quotation-sign{
+    font-size: 20px;
+}
+
+
+.author-wrapper{
+    font-size: 12px;
+}
+
+.quotation-wrapper{
+    height: 250px;
+}
+
+.quotation-box{
+    height: 200px;
+}
+
+img{
+        left: calc(50% - 50px);
+        width: 100px;
+        height: 100px;
+    }
+
+.white-box{
+    top: 25px;
+}
+
+.white-box-left{
+        left: calc(50% - 75px);
+
+}
+
+.white-box-right{
+        left: calc(50% + 50px);
+}
+}
+
+@media(max-width: 350px){
+    .author-wrapper{
+        font-size: 11px;
+        margin-left: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .wrong-author{
+        margin-right: 0.5rem;
+    }
+
+    .quotation-text{
+    font-size: 14px;
+    }
+
+    .quotation-sign{
+    font-size: 18px;
+    }
+}
+
+</style>

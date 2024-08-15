@@ -1,0 +1,13 @@
+---
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import '../../styles/global.css'
+
+const { pageName }  = Astro.props;
+---
+<div id="content-wrapper">
+  <Header currentPage = {pageName} />
+    <slot />  
+  <Footer />
+</div>
+

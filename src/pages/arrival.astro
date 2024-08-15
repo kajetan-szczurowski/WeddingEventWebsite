@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Page from '../components/Main/Page.astro';
+import train from '../images/train.svg';
+import bus from '../images/bus.svg';
+import ArrivalMethod from '../components/supplementary/ArrivalMethod.astro';
+import Gmap from '../components/supplementary/Gmap.astro';
+
+const stationMapUrl = 'https://maps.app.goo.gl/HbcSYzEwNUS3e7rs9';
+---
+
+<Layout title="Dojazd 	&#128061 &#x1F496; 	&#128023">
+	<Page pageName = 'arrival'>
+		<section>
+			<div class = 'big-map'> <Gmap width = 600 height = 450/> </div>
+			<div class = 'small-map'> <Gmap width = 300 height = 350/> </div>
+			<div class = 'very-small-map'> <Gmap width = 200 height = 250/> </div>
+
+
+			<article>
+				<ArrivalMethod imageSrc = {train} imageAlt = {'Graficzny symbol pociągu.'} label = 'Pociąg'>
+					Ze stacji Marcinowice Świdnickie można dostać się na miejsce imprezy w 12 minut. Na stację można dojechać z Dzierżoniowa, 
+					Świdnicy i Wrocławia za pomocą Kolei Dolnośląskich.
+					<br>
+					<a href={stationMapUrl} target='_blank'>Kliknij, aby zobaczyć stację kolejową.</a>
+					
+				</ArrivalMethod>
+
+				<ArrivalMethod imageSrc = {bus} imageAlt = {'Graficzny symbol autobus.'} label = 'Autobus'>
+					Przy sali weselnej zatrzymuje się bus P.W.H.D kursujący na linii Wrocław-Świdnica. 
+					<em>(Opcja dla entuzjastów jazdy w stylu “sardynka w puszce”).</em>
+				</ArrivalMethod>
+			</article>
+		</section>
+	</Page>
+</Layout>
+
+<style>
+
+	section{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1rem;
+	}
+
+	article{
+		max-width: 30%;
+		margin-left: 2rem;
+
+	}
+
+	em{
+		text-decoration: underline;
+		font-style: normal;
+	}
+
+	a{
+		text-decoration: none;
+		/* color: #9a0303; */
+		color: #7d0000;
+		font-weight: bold;
+		font-size: 18px;
+	}
+
+	a:hover{
+		color: #e60404;
+	}
+
+	.small-map, .very-small-map{
+		display: none;
+	}
+
+
+	@media(max-width: 1000px){
+        article{
+			display: flex;
+			justify-content: center;
+		}
+
+		section{
+			flex-direction: column;
+		}
+
+		article{
+			margin: 0;
+			margin-top: 2rem;
+		}
+    }
+
+	@media(max-width: 650px){
+		.big-map, .very-small-map{
+		display: none;
+		}
+
+		.small-map{
+			display: block;
+		}
+
+	}
+
+	@media(max-width: 530px){
+		article{
+			display: flex;
+			flex-direction: column;
+			width: 100vw;
+		}
+
+		section{
+			display: block;
+		}
+
+		.small-map{
+			display: flex;
+			justify-content: center;
+		}
+	}
+
+	@media(max-width: 350px){
+		.big-map, .small-map{
+		display: none;
+		}
+
+		.very-small-map{
+			display: flex;
+			justify-content: center;
+		}
+
+	}
+
+</style>
+

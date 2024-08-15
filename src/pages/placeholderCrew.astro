@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Page from '../components/Main/Page.astro';
+import { Image } from 'astro:assets';
+import Crew from '../images/ekipa1000.webp';
+import SupplementaryPlaceholderInfo_BigVersion from '../components/supplementary/SupplementaryPlaceholderInfo_BigVersion.astro';
+import TextImageTwoColumns from '../components/layouts/TextImageTwoColumns.astro';
+const { currentPage, pageLabel } = Astro.props;
+---
+<Layout title="Wesele! 	&#128061 &#x1F496; 	&#128023">
+	<Page pageName = {currentPage}>
+
+        <div class = 'columns-wrapper'>
+        <TextImageTwoColumns>
+            <Image slot = 'image' src={Crew} alt = 'Zdjęcie Diany w eleganckiej stylizacji' />
+            <div slot = 'text' class = 'placeholder-info'>
+                    <h1>
+                        <span class = 'page-name'>{pageLabel}</span> jeszcze nie jest gotowe, ale nasza ekipa już nad nim pracuje!
+                    </h1>
+                    <div class = 'supplement'><SupplementaryPlaceholderInfo_BigVersion/></div>
+                     
+
+
+            </div>
+        </TextImageTwoColumns>
+        </div>
+  
+
+    </Page>
+</Layout>
+
+<style>
+    .columns-wrapper{
+        position: relative;
+    }
+
+    .placeholder-info{
+        width: 30%;
+        height: 100%;
+        display:flex;
+        flex-direction: column;
+    }
+  
+    .supplement{
+        width: inherit;
+        position: absolute;
+        bottom: 0;
+    }
+
+    h1{
+        font-size: 64px;
+        font-weight: 400;
+        text-wrap: balance;
+        margin: 0;
+        position: absolute;
+        top: 0;
+        width: inherit;
+    }
+
+    p{
+        margin: 0;
+    }
+
+    .page-name{
+        text-transform: capitalize;
+    }
+
+
+    img{
+        max-width: 1000px;
+        width: 35%;
+        height: auto;
+    }
+
+
+    @media(max-width: 1400px){
+        h1{
+            font-size: 48px;
+        }
+
+    }
+
+    @media(max-width: 1120px){
+        .supplement, h1{
+            position: static;
+            width: auto;
+            margin-bottom: 3rem;
+
+        }
+
+        .placeholder-info, img{
+            width: 70%;
+        }
+
+        .placeholder-info{
+            text-align: center;
+        }
+
+        h1{
+            font-size: 36px;
+        }
+
+    }
+
+</style>

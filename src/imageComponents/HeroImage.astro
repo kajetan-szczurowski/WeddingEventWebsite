@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import KajosDiana_Hero from '../images/HeroKajosDiana.webp';
+import smallHero from '../images/smalHero2.webp';
+
+---
+
+<Image src={KajosDiana_Hero} alt="Kajetan i Diana patrzą na siebie." class = 'big-hero'/>
+<Image src={smallHero} alt="Kajetan i Diana patrzą na ten sam obiekt będący poza kadrem." class = 'small-hero' />
+
+
+<style>
+    .small-hero { 
+        display: none;
+    }
+
+    img{
+        width: 100vw;
+        /* height: auto; */
+        height: 100vh;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media(max-width: 600px){
+        img{
+            width: 100vw;
+            height: auto;
+        }
+
+        .big-hero {
+            display: none;
+        }
+
+        .small-hero{
+            display: block;
+        }
+    }
+
+</style>

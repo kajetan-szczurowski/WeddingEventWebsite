@@ -1,0 +1,148 @@
+---
+
+import HeroImage from '../imageComponents/HeroImage.astro'
+---
+
+<section class = 'small-screen-section'>
+  <h1>Diana i Kajtek</h1>
+  <div class = 'supplementary small-date'>19.10.2024</div>
+  <div class = 'supplementary'>sala Prestige</div>
+  <div class = 'supplementary'>Marcinowice</div>
+</section>
+
+
+
+<section class = 'big-screen-section'>
+  <div class = 'wrapper'>
+    <HeroImage />
+    <div class = 'wrapped'>
+      <div class = 'hero-texts'>
+        <h1>Diana i Kajtek</h1>
+        <div class = 'supplementary big-date'>19 października 2024</div>
+        <div class = 'supplementary big-date'>godz. 14:30</div>
+        <div class = 'supplementary small-date'>19.10.2024</div>
+        <div class = 'supplementary small-date'>godz. 14:30</div>
+        <div class = 'supplementary'>sala Prestige w Marcinowicach</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<style>
+
+section {
+  display: flex;
+}
+
+.wrapper{
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+
+.wrapped{
+  width: 50%;
+  height: 74%;
+  background-color: rgba(0,0,0, 0.45);
+  position: absolute;
+  top: 5%;
+  left: 25%;
+  margin: 0 auto;
+  border-radius: 20px;
+  display:flex;
+  align-items: center;
+}
+
+.hero-texts{
+  /* position: absolute; */
+  /* left: 0%; */
+  /* top: 50%; */
+  border-radius: 20px;
+  width: 100%;
+  color: white;
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1{
+  font-size: 108px;
+  margin: 0;
+  -webkit-text-stroke: 1px black;
+  text-stroke: 1px black;
+  font-weight: normal;
+}
+
+.supplementary{
+  font-size: 48px;
+  text-align: center;
+  /* -webkit-text-stroke: 1px black; */
+  /* text-stroke: 1px black; */
+}
+
+.small-date, .small-screen-section{
+    display: none;
+  }
+
+@media (max-width: 1400px){
+		h1{
+      font-size: 72px;
+    }
+
+    .supplementary{
+  font-size: 36px;
+}
+}
+
+@media (max-width:900px){
+  .small-date{
+    display: block
+  }
+
+  .big-date{
+    display: none;
+  }
+}
+
+@media (max-width: 950px){
+		h1{
+      font-size: 48px;
+      -webkit-text-stroke: 0px black;
+      text-stroke: 0px black;
+    }
+
+    .supplementary{
+  font-size: 30px;
+}
+
+
+}
+
+
+
+
+@media (max-width: 600px){
+  .wrapped{
+    display: none;
+  }
+
+  .small-screen-section{
+  display: block;
+}
+
+.hero-texts{
+  display: none;
+}
+
+h1{
+  text-align: center;
+}
+
+}
+
+
+</style>

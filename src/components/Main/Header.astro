@@ -1,0 +1,228 @@
+---
+import SmallScreenNavbar from './SmallScreenNavbar.astro';
+
+const activeColor = "#9A0303";
+const textColor = "black";
+
+const pages = [
+{label: "Strona główna", url : ''}, {label: "Plan uroczystości", url : 'agenda'}, 
+{label: "Dojazd", url : 'arrival'}, {label: "Usadzenie Gości", url : 'chairs'},
+{label: "Menu", url : 'menu'}, {label: "Kontakt", url : 'contact'},
+];
+
+const { currentPage } = Astro.props;
+
+//{currentPage !== page.url ? <div class = 'roof' /> : <div/>}
+---
+
+<header>
+
+    <div class = 'big-roof'>
+    </div>
+
+      <ul class = 'big-screen-list'>
+
+          {pages.map((page) => ( 
+            <li class = 'navigator-element'>
+              <div class = 'interactive-roof' />
+              {currentPage === page.url && <span class = 'current-span'>{page.label}</span>}
+              {currentPage !== page.url && <a href={`/${page.url}`}> {page.label} </a>}
+            </li>
+          ))}
+
+        </ul>
+
+    
+    <section class = 'hamburger-menu'>
+      <button id = 'burger-button'>
+        <svg width="67" height="57" viewBox="0 0 67 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0.5" y="0.5" width="66" height="56" stroke="black"/>
+          <rect x="5" y="7" width="55" height="10" rx="5" fill="black"/>
+          <rect x="5" y="24" width="55" height="10" rx="5" fill="black"/>
+          <rect x="5" y="41" width="55" height="10" rx="5" fill="black"/>
+        </svg>
+      </button>
+    </section>
+  
+</header>
+
+<section class = 'small-navbar'><SmallScreenNavbar pages = {pages} /></section>
+
+<script>
+
+    const urls = document.querySelectorAll('li');
+    urls.forEach(url => {
+        url.onmouseover = () => {url.classList.add('active-parent')};
+        url.onmouseout = () => {url.classList.remove('active-parent')};
+    })
+</script>
+
+<style define:vars={{ activeColor, textColor }}>
+
+  .small-navbar{
+    display: none;
+  }
+
+  .visible{
+    display: none;
+  }
+
+    header{
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  /* position: sticky; */
+  /* top: 0; */
+    }
+
+    button{
+      color: white;
+    }
+
+    .roof-text{
+      color: white;
+      text-decoration: none;
+      margin-left: 1rem;
+      display: none;
+    }
+
+    li {
+  float: left;
+  padding : 8px;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  display: flex;
+  justify-content: center;
+    }
+
+    ul {
+  position: relative;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  /* justify-content: space-evenly; */
+  justify-content: center;
+}
+
+  li a, span{
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+  }
+
+  a{
+    text-decoration: none;
+    color: var(--textColor);
+    width: fit-content;
+    height: fit-content;
+    z-index: 10;
+  }
+
+  span{
+    color: var(--activeColor);
+    /* text-decoration: underline; */
+    z-index: 10;
+  }
+
+
+  div{
+    height: 10px;
+  }
+
+  .interactive-roof{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    transition: height 0.2s;
+  }
+
+  .big-roof{
+    background-color: var(--activeColor);
+    width: 100%;
+    height: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .active-parent .interactive-roof{
+    height: 40px;
+    background-color: var(--activeColor);
+  }
+
+  .active-parent a, .active-parent span{
+    color: white;
+  }
+
+
+  #burger-button{
+    border: 0;
+    padding: 0;
+    height: 57px;
+    margin: 0.5rem;
+    margin-left: 1rem;
+    display: none;
+  }
+
+  #burger-button:hover{
+    cursor: pointer;
+  }
+
+  .navigator-element{
+    margin-right: 2rem;
+  }
+
+  .navigator-element:last-child{
+    margin-right: 0;
+  }
+
+
+
+  /* @media(max-width: 950px){
+    li a{
+      font-size: 24px;
+    }
+  }
+
+  @media(max-width: 850px){
+    li a{
+      font-size: 20px;
+    }
+  } */
+
+
+  @media(max-width: 1090px){
+    .big-screen-list, .big-roof{
+      display: none;
+    }
+
+    header{
+      margin-bottom: 0px;
+    }
+
+    #burger-button{
+      display: block;
+    }
+
+    .visible{
+    display: block;
+    }
+
+  }
+  
+
+</style>
+
+<script>
+  const hamburgerButton = document.getElementById("burger-button");
+  hamburgerButton?.addEventListener("click", burgerButtonClickHandle);
+  const smallNavbarSection = document.querySelector(".small-navbar");
+
+  function burgerButtonClickHandle(){
+    smallNavbarSection?.classList.toggle("visible");
+  }
+
+</script>
