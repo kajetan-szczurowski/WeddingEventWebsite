@@ -1,0 +1,80 @@
+---
+import Layout from "../layouts/Layout.astro"
+import Page from "../components/Main/Page.astro"
+---
+
+<Layout title="Prezenty &#128061 &#x1F496; &#128023">
+	<Page pageName = 'gifts'>
+        <main>
+		<h1>Prezenty</h1>
+
+            <section class = 'text-chunk'>
+                Dostaliśmy sporo pytań o listę prezentową, w związku z tym zamieszczamy instrukcje.
+            </section>
+
+                <ul class = 'text-chunk'>
+                    <li>
+                        <div>
+                            <img src = 'https://www.svgrepo.com/show/482420/bottle-wine.svg'>
+                            Nie chcemy alkoholu.
+                        </div>
+                    </li>
+
+                    <li>
+                        <div>
+                            <img src = 'https://www.svgrepo.com/show/264490/flowers-flower.svg'>
+                            Nie chcemy kwiatów.
+                        </div>
+                    </li>
+
+                    <li>
+                        <div>
+                            <img src = 'https://www.svgrepo.com/show/422202/lotto-lottery-raffle.svg'>
+                            Nie chcemy zdrapek.
+                        </div>
+                    </li>
+                </ul>
+
+            <section class = 'text-chunk'>
+                Jeśli chcecie dołożyć nam jakieś drobiazgi do prezentu, chętnie przyjmiemy słodycze.
+            </section>
+        </main>
+    </Page>
+</Layout>
+
+<style>
+
+    li div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    img{
+        width: 100px;
+        margin-right: 2rem;
+    }
+
+    main{
+		text-align: center;
+        width: 80%;
+		margin: 0 auto;
+    }
+
+    ul{
+        list-style-type: none; /* Remove bullets */
+        padding: 0; /* Remove padding */
+        margin: 0; /* Remove margins */
+        width: 90%;
+    }
+
+    .text-chunk{
+		font-size: 42px;
+		margin-bottom: 5rem;
+	}
+
+    h1{
+        font-size: 64px;
+    }
+</style>
