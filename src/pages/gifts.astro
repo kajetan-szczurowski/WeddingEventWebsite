@@ -1,6 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro"
 import Page from "../components/Main/Page.astro"
+import Image from "astro/components/Image.astro"
+import Bottle from '../images/gifts/Bottle.svg';
+import Chokolate from '../images/gifts/Chokolate.svg';
+import Coffee from '../images/gifts/Coffee.svg';
+import Flower from '../images/gifts/Flower.svg';
+import Lotto from '../images/gifts/Lotto.svg';
+import Tea from '../images/gifts/Tea.svg'
+
 ---
 
 <Layout title="Prezenty &#128061 &#x1F496; &#128023">
@@ -9,34 +17,63 @@ import Page from "../components/Main/Page.astro"
 		<h1>Prezenty</h1>
 
             <section class = 'text-chunk'>
-                Dostaliśmy sporo pytań o listę prezentową, w związku z tym zamieszczamy nasze preferencje.
+                Goście są dla nas najważniejsi, dlatego prosimy, abyście nie czuli się w obowiązku przynosić cokolwiek.
+                Dostaliśmy jednak sporo pytań o listę prezentową, w związku z tym zdecydowaliśmy się zamieścić nasze preferencje.
             </section>
 
                 <ul class = 'text-chunk'>
-                    <li>
-                        <div>
-                            <img src = 'https://www.svgrepo.com/show/482420/bottle-wine.svg'>
-                            Nie chcemy alkoholu.
-                        </div>
-                    </li>
+                    <section>
+                        <li>
+                            <div>
+                                <!-- <img src = 'https://www.svgrepo.com/show/482420/bottle-wine.svg'> -->
+                                <Image src = {Bottle} alt = 'przekreślony rysunek butelki wina'></Image>
+                                <span class = 'image-description'>Nie chcemy alkoholu.</span>
+                            </div>
+                        </li>
 
-                    <li>
-                        <div>
-                            <img src = 'https://www.svgrepo.com/show/264490/flowers-flower.svg'>
-                            Nie chcemy kwiatów.
-                        </div>
-                    </li>
+                        <li>
+                            <div>
+                                <!-- <img src = 'https://www.svgrepo.com/show/264490/flowers-flower.svg'> -->
+                                <Image src = {Flower} alt = 'przekreślony rysunek kwiatów w doniczce'></Image>
+                                <span class = 'image-description'>Nie chcemy kwiatów.</span>
+                            </div>
+                        </li>
 
-                    <li>
-                        <div>
-                            <img src = 'https://www.svgrepo.com/show/422202/lotto-lottery-raffle.svg'>
-                            Nie chcemy zdrapek.
-                        </div>
-                    </li>
+                        <li>
+                            <div>
+                                <!-- <img src = 'https://www.svgrepo.com/show/422202/lotto-lottery-raffle.svg'> -->
+                                <Image src = {Lotto} alt = 'przekreślony rysunek kuponu na loterię'></Image>
+                                <span class = 'image-description'>Nie chcemy zdrapek.</span>
+                            </div>
+                        </li>
+                    </section>
+
+                     <section>
+                        <li>
+                            <div>
+                                <Image src = {Chokolate} alt = 'rysunek tabliczki czekolady ze znakiem akceptacji'></Image>
+                                <span class = 'image-description'>Lubimy słodycze.</span>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div>
+                                <Image src = {Coffee} alt = 'rysunek ziaren kawy ze znakiem akceptacji'></Image>
+                                <span class = 'image-description'>Lubimy kawę.</span>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div>
+                                <Image src = {Tea} alt = 'rysunek torebki herbaty ze znakiem akceptacji'></Image>
+                                <span class = 'image-description'>Lubimy herbatę.</span>
+                            </div>
+                        </li>
+                    </section> 
                 </ul>
 
             <section class = 'text-chunk'>
-                Jeśli chcecie dołożyć nam jakieś drobiazgi do prezentu, chętnie przyjmiemy słodycze oraz kawę i herbatę.
+                Jeśli chcecie obdarować nas prezentem, to sprawicie nam dużą przyjemność, wspierając finansowo nasze marzenia.
             </section>
         </main>
     </Page>
@@ -44,10 +81,14 @@ import Page from "../components/Main/Page.astro"
 
 <style>
 
+    ul section{
+        width: 35vw;
+    }
+
     li div{
         display: flex;
         align-items: center;
-        justify-content: center;
+        /* justify-content: center; */
         margin-bottom: 1rem;
     }
 
@@ -66,7 +107,10 @@ import Page from "../components/Main/Page.astro"
         list-style-type: none; /* Remove bullets */
         padding: 0; /* Remove padding */
         margin: 0; /* Remove margins */
-        width: 90%;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
     }
 
     .text-chunk{
@@ -76,5 +120,34 @@ import Page from "../components/Main/Page.astro"
 
     h1{
         font-size: 64px;
+    }
+
+    .image-description{
+        width: 350px;
+    }
+
+    @media (max-width: 1130px){
+        ul section{
+            width: 80vw;
+
+        }
+
+        li div{
+        justify-content: center;
+    }
+    }
+
+    @media (max-width: 330px){
+
+        .text-chunk{
+            font-size: 24px;
+        }
+        h1{
+            font-size: 36px;
+        }
+
+        li div{
+            flex-direction: column;
+        }
     }
 </style>
