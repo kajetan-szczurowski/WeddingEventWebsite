@@ -16,4 +16,25 @@ html {
   * {
     box-sizing: border-box;
   }
+
+  /* Countdown styling */
+
+  .time-unit-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .countdown-number{
+    font-size: 48px;
+  }
+
+  .countdown-label{
+    font-size: 20px;
+    text-transform: uppercase;
+  }
+
+  .time-colon{
+    font-size: 48px;
+  }
   

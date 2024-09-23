@@ -1,0 +1,141 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Page from '../components/Main/Page.astro';
+import CountDown from '../components/supplementary/CountDown.astro';
+
+interface Props {
+    finalDate: string,
+    label: string,
+    pageName: string
+}
+
+const {finalDate, label, pageName} = Astro.props;
+
+---
+
+<Layout title="Wesele! 	&#128061 &#x1F496; 	&#128023">
+	<Page pageName = {pageName}>
+
+    <section class = 'placeholder-wrapper'>
+
+        <h1>
+            <span class = 'page-name'>{label}</span> pojawi się już niedługo!
+        </h1>
+
+            <div class = 'count-down-wrapper'> <CountDown finalDate={finalDate}/> </div>
+
+            <div class = 'appendix'> Jeśli masz jakieś pytania w tej sprawie, zachęcamy do <a href={`contact`}>kontaktu</a> z nami. </div>
+
+
+        <!-- <div class = 'columns-wrapper'>
+            <div slot = 'text' class = 'placeholder-info'>
+                    <h1>
+                        <span class = 'page-name'>{'xd'}</span> jeszcze nie jest gotowe, ale nasza ekipa już nad nim pracuje!
+                    </h1>
+                     
+
+
+            </div>
+        </div> -->
+  
+    </section>
+
+    </Page>
+</Layout>
+
+<style>
+
+     .placeholder-wrapper{
+        min-height: 500px;
+    } 
+
+    a{
+        text-decoration: none;
+        color: black;
+        text-decoration: underline;
+    }
+
+    .appendix{
+        font-size: 24px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .count-down-wrapper{
+        /* height: 100px; */
+        display: flex;
+        justify-content: center;
+    }
+
+    .columns-wrapper{
+        position: relative;
+    }
+
+    .placeholder-info{
+        width: 30%;
+        height: 100%;
+        display:flex;
+        flex-direction: column;
+    }
+  
+    .supplement{
+        width: inherit;
+        position: absolute;
+        bottom: 0;
+    }
+
+    h1{
+        font-size: 64px;
+        font-weight: 400;
+        text-wrap: balance;
+        margin: 0;
+        width: inherit;
+        text-align: center;
+    }
+
+    p{
+        margin: 0;
+    }
+
+    .page-name{
+        text-transform: capitalize;
+    }
+
+
+    img{
+        max-width: 1000px;
+        width: 35%;
+        height: auto;
+    }
+
+
+    @media(max-width: 1400px){
+        h1{
+            font-size: 48px;
+        }
+
+    }
+
+    @media(max-width: 1120px){
+        .supplement, h1{
+            position: static;
+            width: auto;
+            margin-bottom: 3rem;
+
+        }
+
+        .placeholder-info, img{
+            width: 70%;
+        }
+
+        .placeholder-info{
+            text-align: center;
+        }
+
+        h1{
+            font-size: 36px;
+        }
+
+    }
+
+</style>

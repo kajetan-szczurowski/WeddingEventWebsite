@@ -1,0 +1,136 @@
+---
+// clock alghoritm source: https://www.w3schools.com/howto/howto_js_countdown.asp
+
+interface Props {
+    finalDate: string;
+}
+
+const {finalDate} = Astro.props;
+const finalDateValue = new Date(finalDate).getTime();
+---
+<section id = 'countdown-time-displayer'>
+Ładowanie...
+</section>
+
+<script define:vars={{ finalDateValue }}>
+
+const REFRESH_RATE = 1000;
+const HTML_OUTPUT_ELEMENT = document.getElementById('countdown-time-displayer');
+
+// performTimeCounting();
+
+const inter = setInterval(function(){
+    performTimeCounting();
+    // clearInterval(inter);
+},REFRESH_RATE);
+
+function performTimeCounting(){
+    const currentDifference = getDHMSTimeDistance(finalDateValue);
+    const timesArray = getTimesArray(currentDifference);
+    HTML_OUTPUT_ELEMENT.replaceChildren();
+    timesArray.forEach(time => {
+        HTML_OUTPUT_ELEMENT.appendChild(appendTimeElement(time.numeric, time.label));
+        if (!time.label.includes('sek')) HTML_OUTPUT_ELEMENT.appendChild(getElementWithClassesAndText('div', 'time-colon', ':'));
+    });
+}
+
+function getDHMSTimeDistance(finalDate){
+    const now = new Date().getTime();
+    const timeDifference = finalDate - now;
+
+    if (timeDifference <= 0) return {days: 0, hours: 0, minutes: 0, seconds: 0};
+
+    return{
+        days: Math.floor(timeDifference / (1000 * 60 * 60 * 24)),
+        hours:  Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((timeDifference % (1000 * 60)) / 1000)
+    }
+
+}
+
+function getTimesArray(timeObject){
+    const timesArray = Object.keys(timeObject).map(key => getTimesOutput(key, timeObject[key]));
+    return timesArray;
+    // console.table(timeObject);
+    // console.log(timesArray);
+    // debugger;
+}
+
+function getTimesOutput(key, value){
+    const numericOutput = parseTimeNumericValue(value);
+    const labelOutput = (key === 'days') ? getPolishDaysLabel(value) : getPolishTimeLabel(value, polishTimeDictionary[key]);
+    return {numeric: numericOutput, label: labelOutput};
+}
+
+function getPolishTimeLabel(numericValue, baseLabel){
+    if (Number.isNaN(numericValue)) return "";
+    if (numericValue === 1) return baseLabel + "a";
+    const stringed = String(numericValue);
+    if (stringed[1] == '2' || stringed[1] == '3' || stringed[1] == '4') return baseLabel + "y";
+    return baseLabel;
+}
+
+function getPolishDaysLabel(daysNumber){
+    if (Number.isNaN(daysNumber)) return "";
+    if (daysNumber === 1) return "dzień";
+    return "dni";
+
+}
+
+function parseTimeNumericValue(numericValue){
+    if (Number.isNaN(numericValue)) return "00";
+    if (numericValue >= 10) return String(numericValue);
+    if (numericValue >= 1) return "0" + String(numericValue);
+    return "00";
+}
+
+// function appendTimeToElement(element, time){
+//     if (element) element.innerText = `${time.days}d ${time.hours}h ${time.minutes}m ${time.seconds}s`;
+// }
+
+function appendTimeElement(numeric, label){
+    const numberContainer = getElementWithClassesAndText('div', 'countdown-number', numeric);
+    const labelContainer = getElementWithClassesAndText('div', 'countdown-label', label);
+    const wrapper = getElementWithClassesAndText('div', 'time-unit-wrapper', '');
+    wrapper.appendChild(numberContainer);
+    wrapper.appendChild(labelContainer);
+    return wrapper;
+}
+
+function getElementWithClassesAndText(elementName, classes, text){
+    const newElement = document.createElement(elementName);
+    newElement.classList.add(classes);
+    newElement.innerText = text;
+    return newElement;
+}
+
+const polishTimeDictionary = {
+    'hours': 'godzin',
+    'minutes': 'minut',
+    'seconds': 'sekund'
+};
+
+
+</script>
+
+<style>
+
+section{
+    display: flex;
+    width: 25%;
+    justify-content: space-evenly;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    align-items: center;
+    /* border: 1px solid white; */
+    border-radius: 2rem;
+    height: 200px;
+    /* background-color: rgb(245, 245, 245); */
+    /* box-shadow: 5px 10px #888888; */
+}
+
+
+</style>
