@@ -68,6 +68,21 @@ html {
 
   }
 
+   @media(max-width: 200px){
+    .countdown-number{
+     font-size: 10px;
+    } 
+ 
+    .countdown-label{
+     font-size: 10px;
+    }
+ 
+    .time-colon{
+     font-size: 10px;
+    }
+
+  }
+
 
 
    
