@@ -11,6 +11,8 @@ import ImportanQuotation from '../components/supplementary/ImportanQuotation.ast
 // import Kajetan from '../images/KajetanKopernik.webp';
 // import Diana from '../images/DianaCytat.webp';
 
+import CountDown from '../components/supplementary/CountDown.astro';
+
 ---
 
 <Layout title="Wesele! 	&#128061 &#x1F496; 	&#128023">
@@ -45,10 +47,18 @@ import ImportanQuotation from '../components/supplementary/ImportanQuotation.ast
 				Na tej stronie znajdziesz wszystkie potrzebne informacje związane z naszą imprezą. Proszę, miej na uwadze, że wesele jest w trakcie organizacji, a więc część treści jeszcze nie jest dostępna i będzie uzupełniana na bieżąco.
 			</section>
 
+			<div class = 'intro'>
+				<section class = 'trailer'>
+					Do ślubu pozostało:
+				</section>
+				<CountDown finalDate='Oct 19 2024 14:30:00' />
+			</div>
+
 			<div class = 'intro'><ImportanQuotation/></div>
 
 			<section  class = 'less-important-index-text last-index-entry intro'>
-				Nasza przygoda rozpocznie się w sobotę 19 października w sali bankietowej “Prestige”. Na początek zapraszamy na ceremonię ślubu humanistycznego, gdzie poznacie naszą historię i usłyszycie nasze osobiste przysięgi. Następnie zaczynamy zabawę weselną!
+				Nasza przygoda rozpocznie się w sobotę 19 października o 14:30 w sali bankietowej “Prestige”. Na początek zapraszamy na ceremonię ślubu humanistycznego, gdzie poznacie naszą historię i usłyszycie nasze osobiste przysięgi. 
+				Jeśli pogoda na to pozwoli, ślub odbędzie się w ogrodzie. Jeśli nie, ceremonia odbędzie się w sali. Następnie zaczniemy zabawę weselną!
 			</section>
 			
 		</main>
@@ -80,6 +90,10 @@ import ImportanQuotation from '../components/supplementary/ImportanQuotation.ast
 	section:first-child{
 		font-size: 64px;
 		}
+
+	.trailer{
+		font-size: 48px;
+	}
 
 
 	.less-important-index-text{

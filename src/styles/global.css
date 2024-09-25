@@ -37,4 +37,38 @@ html {
   .time-colon{
     font-size: 48px;
   }
+
+  @media(max-width: 400px){
+    .countdown-number{
+     font-size: 36px;
+    } 
+ 
+    .countdown-label{
+     font-size: 16px;
+    }
+ 
+    .time-colon{
+     font-size: 30px;
+    }
+
+  }
+  
+  @media(max-width: 350px){
+   .countdown-number{
+    font-size: 24px;
+   } 
+
+   .countdown-label{
+    font-size: 11px;
+   }
+
+   .time-colon{
+    font-size: 20px;
+   }
+
+  }
+
+
+
+   
   
