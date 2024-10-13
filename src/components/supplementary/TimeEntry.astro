@@ -1,0 +1,170 @@
+---
+import TimeEntryBullet from './TimeEntryBullet.astro'
+
+interface Props{
+    direction: 'left' | 'right',
+    label: string,
+    description: string,
+    time: string,
+}
+
+const {direction, label, description, time} = Astro.props
+const headerClass = `time-header-${direction}`;
+---
+
+<!-- <article class = {`time-entry-wrapper-${direction}`}> -->
+    {direction === 'left' && 
+        <div class = 'time-entry-text-container'>
+            <header class = {headerClass}>{label}
+                <div class = 'ultra-small-screen-time-text'>{time}</div>
+            </header>
+            <section class = {`entry-description-${direction}`}>{description}</section>
+        </div>
+
+        <div class = 'time-entry-bullet-container'><TimeEntryBullet/></div>
+
+        <div class = {`time-entry-time time-entry-time-${direction}`}>
+            <div class = 'time-wrapper'>{time}</div>
+        </div>
+    }
+
+{direction === 'right' && 
+
+<div class = {`time-entry-time time-entry-time-${direction}`}>
+    <div class = 'time-wrapper'>{time}</div>
+</div>
+
+<div class = 'time-entry-bullet-container'>
+    <TimeEntryBullet/>
+</div>
+
+<div class = 'time-entry-text-container'>
+    <header class = {headerClass}>{label}</header>
+    <section class = {`entry-description-${direction}`}>{description}</section>
+</div>
+
+}
+
+<!-- </article> -->
+
+<style>
+    header{
+        text-transform: uppercase;
+        background: #7d0000;
+        padding: 1rem;
+        color: white;
+        height: 50px;
+        font-weight: bold;
+    }
+
+    .time-header-left{
+        clip-path: polygon(0% 100%, 0% 0%, 98% 0%, 98% 40%, 100% 50%, 98% 60%, 98% 100%);
+    }
+
+    .time-header-right{
+        clip-path: polygon(2% 100%, 2% 60%, 0% 50%, 2% 40%, 2% 0%, 100% 0%, 100% 100%);
+    }
+
+    .entry-description-right{
+        margin-left: 2%;
+    }
+
+    section{
+        background: rgba(0,0,0,0.2);
+        padding: 1rem;
+        width: 98%;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+
+    .time-entry-bullet-container{
+        margin-top: 0px;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        width: 50px;
+        height: 50px;
+        background: #9a0303;
+        clip-path: circle(50% at 50% 50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+    .time-entry-text-container{
+        width: 220px;
+    }
+
+    .time-entry-time{
+        width: 100%;
+    }
+
+    .time-entry-time-left{
+        padding-left: 0.5rem;
+    }
+
+    .time-entry-time-right{
+        padding-right: 0.5rem;
+    }
+
+    .time-wrapper{
+        height: 50px;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .time-entry-time-right .time-wrapper{
+        justify-content: flex-end;
+    }
+
+    .ultra-small-screen-time-text{
+        display: none;
+    }
+
+    @media (max-width: 560px){
+        .time-entry-text-container{
+            width: 170px;
+        }
+
+        header{
+            height: auto;
+        }
+
+        .time-header-left{
+            clip-path: none;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .entry-description-left{
+            width: 100%;
+        }
+
+
+
+ 
+	}
+
+    @media(max-width: 370px){
+        .ultra-small-screen-time-text{
+            display: block;
+        }
+
+        .time-entry-time{
+            width: 0;
+            overflow: hidden;
+        }
+
+        .time-entry-bullet-container{
+            width: 0;
+            height: 0;
+        }
+    }
+
+
+
+</style>

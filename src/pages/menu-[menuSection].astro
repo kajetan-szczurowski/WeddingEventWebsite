@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Page from '../components/Main/Page.astro';
+import FoodGroup from '../components/ReactComponents/FoodGroup';
+import FoodExplorer from '../components/ReactComponents/FoodExplorer';
+
+export function getStaticPaths() {
+  return [
+    {params: {menuSection: 'dishes'}},
+    {params: {menuSection: 'snacks'}},
+    {params: {menuSection: 'sweets'}},
+    {params: {menuSection: 'drinks'}},
+  ];
+}
+
+const { menuSection } = Astro.params;
+
+const drinks = [{label: 'Drinki', food: [
+'Jestodpowiedź',
+'Ja to nie umiem, ale polecam Krystianai',
+'#!$%@?, szukaj krystiana',
+'argh.jpg',
+'wystarczy, że hehe obejrzysz',
+'idź się #!$%@?ć, bo studia hehe'
+]}];
+
+const snacks = {label: 'Zimna płyta', food: [
+'Deska serów',
+'Pasztet z białej fasoli',
+'Rolada szpinakowa z serkiem biały i warzywami',
+'Sałatka mafijna z burakiem',
+'Sałatka tortellini z ananasem',
+'Sałatka Cezar z tofu',
+'Jajka w sosie tatarskim',
+'Pomidory z mozarellą',
+'Seleryba po grecku',
+'Śledzie po kaszubsku z boczniaków',
+'Wegański smalec'
+]};
+
+
+const dishes = {label: 'Gorące dania', food: ['Zupa krem z dyni z nutą imbiru', 'Kotlet z soczewicy na kapuście z pomidorami', 
+	'Purée ziemniaczane', 'Buraczki z cebulką', 'Czerwona kapusta z majonezem', 'Surówka chińska z sezamem', 
+	'Zupa gulaszowa z batatem i dynią', 'Gołąbki z kaszą lub ryżem i grzybami, sos śmietanowy z grzybami.',
+	'Flaczki z boczniaków', 'Krokiety z barszczem']
+};
+
+const sweets = {label: 'Słodki stół', food: ['Bezy',
+'Ptysie z kremem karpatkowym i owocami',
+'Tiramisu',
+'Malinowa chmurka',
+'Tartaletka kawowa',
+'Tartaletka cytrynowa',
+'Cakesicles',
+'Monoporcje czekoladowe',
+'Monoporcje słony karmel',
+'Monoporcje owoce leśne',
+'Malinowy król',
+'Karpatka',
+'Miodownik',
+'Sernik z mango curdem',
+'Jabłecznik',
+'Rurki z kremem'
+]};
+
+const containersHeigths = {
+    'dishes': '600px',
+    'snacks': '660px',
+    'sweets': '960px'
+}
+
+const dishesLabels = {
+    'dishes': 'Gorące dania',
+    'snacks': 'Zimna płyta',
+    'sweets': 'Słodki stół'
+}
+
+
+---
+<Layout title="Welcome to Astro.">
+	<Page pageName = 'menu'>
+        <article class = 'small-screen-menus'>
+
+            <FoodGroup label = {dishes.label} food = {dishes.food} expandedOnDefault = {menuSection === 'dishes'} containerHeight = {containersHeigths['dishes']} client:visible />
+            <FoodGroup label = {snacks.label} food = {snacks.food} expandedOnDefault = {menuSection === 'snacks'} containerHeight = {containersHeigths['snacks']} client:visible />
+            <FoodGroup label = {sweets.label} food = {sweets.food} expandedOnDefault = {menuSection === 'sweets'} containerHeight = {containersHeigths['sweets']} client:visible />
+            <!-- <FoodGroup label = {drinks.label} food = {drinks.food} expandedOnDefault = {menuSection === 'drinks'} client:load /> -->
+
+        </article>
+
+        <article class = 'big-screen-menus'>
+            <FoodExplorer foods = {[dishes, snacks, sweets]} defaultFood = {dishesLabels[menuSection]} client:visible/>
+        </article>
+        
+    </Page>
+</Layout>
+
+<style>
+
+    @media screen and (min-width: 1095px){
+        .small-screen-menus{
+            display: none;
+        }
+
+        .big-screen-menus{
+            display: block;
+        }
+    }
+
+    @media (max-width: 1094px){
+        .small-screen-menus{
+            display: block;
+        }
+
+        .big-screen-menus{
+            display: none;
+        }
+    }
+        
+
+</style>

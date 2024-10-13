@@ -4,51 +4,9 @@ import Page from '../components/Main/Page.astro';
 import FoodList from '../components/supplementary/FoodList.astro';
 import { Image } from 'astro:assets';
 import Diana from '../images/DianaWino2.webp';
-
-const drinks = [{label: 'Drinki', food: [
-'Jestodpowiedź',
-'Ja to nie umiem, ale polecam Krystianai',
-'#!$%@?, szukaj krystiana',
-'argh.jpg',
-'wystarczy, że hehe obejrzysz',
-'idź się #!$%@?ć, bo studia hehe'
-]}];
-
-const snacks = [{label: 'Zimne Przekąski', food: [
-'Jestodpowiedź',
-'Ja to nie umiem, ale polecam Krystianai',
-'#!$%@?, szukaj krystiana',
-'argh.jpg',
-'wystarczy, że hehe obejrzysz',
-'idź się #!$%@?ć, bo studia hehe'
-]}];
+import FoodGroup from '../components/ReactComponents/FoodGroup.tsx'
 
 
-const dishes = [{label: 'Obiad (15:00)', food: ['Zupa jakaś', 'Drugie danie', 'Surówka twojej starej']}, 
-{label: 'I Kolacja (18:00)', food: ['Zupa jakaś', 'Drugie danie', 'Surówka twojej starej']},
-{label: 'II Kolacja (21:00)', food: ['Zupa jakaś', 'Drugie danie', 'Surówka twojej starej']},
-{label: 'III Kolacja (00:00)', food: ['Zupa jakaś', 'Drugie danie', 'Surówka twojej starej']}];
-
-const sweetTable = [{label: 'Słodki stół', food: ['Ciasto świnki w błotku',
-'Koryto ciastek',
-'bądź mną',
-'lvl 20',
-'studiuj matematykę stosowaną',
-'ćwiczenia z analizy',
-'"Macie tutaj pare całeczek, walniecie je sobie”',
-'patrzysz na tablicę',
-'nie ruszysz tego nijak',
-'zajęcia się kończą',
-'zrobię w domu, internety pomogą',
-'siadaj do kompa',
-'tricki z licbazy wolfram w ulubionych',
-'"no results found in terms of standard mathematical functions"',
-'#!$%@?ło, Wolfram nie daje rady, a ja mam dać',
-'googluj dalej',
-'Indefinite Integral Calculator.exe',
-'No solution available',
-'Idź żebrać o rozwiązanie na jakieś forum politechniczne'
-]}]
 
 ---
 
@@ -56,29 +14,25 @@ const sweetTable = [{label: 'Słodki stół', food: ['Ciasto świnki w błotku',
 	<Page pageName = 'menu'>
 		<article>
 
-			<section class = 'main-food-list'>
-					<Image slot = 'image' src = {Diana} alt = 'Diana trzymająca kieliszek wina.'></Image>
-						<section class = 'food-wrapper'>
+			<a href="/menu-dishes"><button>Dania główne</button></a>
+			<a href="/menu-snacks"><button>Przystawki</button></a>
+			<a href="/menu-sweets"><button>Desery</button></a>
+			<a href="/menu-drinks"><button>Drinki</button></a>
 
-							<section class = 'food-and-dessert'>
+			<!-- <section class = 'main-food-list'> -->
+					<!-- <Image slot = 'image' src = {Diana} alt = 'Diana trzymająca kieliszek wina.'></Image> -->
+						<!-- <section class = 'food-wrapper'> -->
+							<!-- <FoodGroup label = {dishes.label} food = {dishes.food} client:load /> -->
+							<!-- <FoodGroup label = {snacks.label} food = {snacks.food} client:load /> -->
+							<!-- <FoodGroup label = {sweetTable.label} food = {sweetTable.food} client:load /> -->
+
+							<!-- <FoodList foods = {dishes} /> -->
+							<!-- <FoodList foods = {sweetTable} /> -->
+							<!-- <FoodList foods = {drinks} /> -->
+							<!-- <FoodList foods = {snacks} /> -->
 							
-								<div>
-									<FoodList foods = {dishes} />
-								</div>
-							
-								<div>
-									<FoodList foods = {sweetTable} />
-								</div>
-
-							</section>
-						
-							<section class = 'drinks-and-snacks'>
-								<FoodList foods = {drinks} />
-								<FoodList foods = {snacks} />
-							</section>
-
-						</section>
-			</section>
+						<!-- </section> -->
+			<!-- </section> -->
 
 
 
@@ -88,6 +42,36 @@ const sweetTable = [{label: 'Słodki stół', food: ['Ciasto świnki w błotku',
 
 
 <style>
+	article{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1rem;
+		width: 100%;
+	}
+
+	button{
+		width: 300px;
+		height: 180px;
+		box-shadow: 0px 1px 0px 0px #f0f7fa;
+		background-color: #7d0000;
+		border-radius:10px;
+		border:1px solid black;
+		cursor:pointer;
+		color:white;
+		font-size:24px;
+		font-weight:bold;
+		padding:6px 24px;
+		text-decoration:none;
+		text-shadow:0px -1px 0px #5b6178;
+	}
+
+	button:hover{
+		background-color: #9a0303;
+		font-size:28px;
+	}
+
+	/*  */
 	.main-food-list{
 		display: flex;
 		align-items: flex-start;

@@ -12,10 +12,100 @@ html {
     width: 100%;
     line-height: 1.5;
   }
-  
+
+ 
   * {
     box-sizing: border-box;
   }
+
+  .display-none{
+    display: none;
+  }
+
+  .height-0{
+    height: 0;
+  }
+
+  .unstyled-button{
+    background: none;
+    border: none;
+    font: inherit;
+    outline: inherit;
+  }
+
+  /* Dishes list styling */
+  
+  .dishes{
+    list-style-type: none;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    overflow: hidden;
+    transition: height 1.5s ease-out;
+  }
+
+  .dishes li, .food-explorer-button{
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .dishes li{
+    margin-bottom: 0.5rem;
+  }
+
+  .listed-item{
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .foods-group-label{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+
+  .foods-group-label:hover{
+    cursor: pointer;
+  }
+
+  .dish-expand-pointer{
+    font-weight: bold;
+    transition: transform 1.5s ease-out;
+  }
+
+ 
+
+  .dishes-header-selected{
+    color: #7d0000;
+  }
+
+
+  .food-explorer-navbar{
+    display: flex;
+    width: 50%;
+    justify-content: space-evenly;
+    /* border-bottom: 1px solid black; */
+  }
+
+  .food-explorer-header-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .food-explorer-button:hover{
+    cursor: pointer;
+    color: #7d0000;
+  }
+
+  .selected-label-button{
+    color: #7d0000;
+    border-bottom: 2px solid #7d0000;;
+  }
+
+
 
   /* Countdown styling */
 

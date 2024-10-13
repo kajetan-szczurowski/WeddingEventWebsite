@@ -1,17 +1,121 @@
 ---
-// import Layout from '../layouts/Layout.astro';
-// import Page from '../components/Main/Page.astro';
+import Layout from '../layouts/Layout.astro';
+import Page from '../components/Main/Page.astro';
+import TimeEntry from '../components/supplementary/TimeEntry.astro';
 import PlaceholderCrew from "./placeholderCrew.astro";
 import PlaceholderTime from "./placeholderTime.astro";
+
+const agendaItems = [
+	{label: 'Ślub humanistyczny', description: 'Kopytko', time: '14:30'},
+	{label: 'Obiad', description: 'Kopytkoxxd', time: '15:20'},
+	{label: 'Ślub humanistyczny', description: 'Kopytko', time: '14:30'},
+	{label: 'Obiad', description: 'Kopytkoxxd', time: '15:20'},
+];
+
+let parity = true;
+
 ---
 <!-- <PlaceholderCrew currentPage = {'agenda'} pageLabel = 'wydarzenie'/> -->
 <!-- <PlaceholderTime finalDate="Oct 15 2024 22:00:00" label = "plan" pageName = "agenda"/> -->
-<PlaceholderTime finalDate="15.10.2024" label = "plan" pageName = 'agenda'/>
+<!-- <PlaceholderTime finalDate="15.10.2024" label = "plan" pageName = 'agenda'/> -->
 
-<!-- <Layout title="Welcome to Astro.">
+<Layout title="Welcome to Astro.">
 	<Page pageName = 'agenda'>
-		Plan wydarzenia.
+		<!-- <h1>Plan wydarzenia</h1> -->
+		<div class = 'agenda-subtext'>Podane godziny są sugerowane i mogą się zmienić w zależności od różnych sytuacji na sali weselnej.</div>
+
+		<article>
+
+			<div class = 'timeline-visualization-line'></div>
+
+			<section class = 'big-screen-agenda'>
+				{agendaItems.map(timeEntry => {
+					parity = !parity;
+					return(
+					<TimeEntry direction = {parity? 'right' : 'left'} {...timeEntry}/>
+				)})}
+			</section>
+
+			<section class = 'small-screen-agenda'>
+				{agendaItems.map(timeEntry => {
+					return(
+					<TimeEntry direction = 'left' {...timeEntry}/>
+				)})}
+			</section>
+
+		</article>
 	</Page>
-</Layout> -->
+</Layout>
+
+<style>
+	h1{
+		text-align: center;
+		margin-bottom: 6px;
+		font-size: 64px;
+	}
+
+	section{
+		display: grid;
+		grid-template-columns: 250px 50px 250px;
+		justify-items: center;
+		align-items: start;
+		row-gap: 3rem;
+	}
+
+	article{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		flex-direction: column;
+	}
+
+	.timeline-visualization-line{
+        width: calc(50% - 1rem + 2px);
+        position: absolute;
+        top: 0%;
+        left: 1rem;
+        height: 100%;
+        border-right: 3px solid #7d0000;
+    }
+
+	.agenda-subtext{
+		text-align: center;
+		margin-bottom: 4rem;
+		font-size: 24px;
+		padding: 1rem;
+
+	}
+
+	.small-screen-agenda{
+		display: none;
+	}
+
+	@media (max-width: 560px){
+		section{
+			grid-template-columns: 250px 50px 70px;
+		}
+
+		.big-screen-agenda{
+			display: none;
+		}
+
+		.small-screen-agenda{
+			display: grid;
+		}
+
+		.timeline-visualization-line{
+			border: none;
+		}
+	}
+
+	@media (max-width: 300px){
+		section{
+			grid-template-columns: 90%;
+			row-gap: 0;
+		}
+	}
+
+</style>
 
 

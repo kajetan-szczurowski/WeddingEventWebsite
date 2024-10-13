@@ -6,8 +6,18 @@ import '../../styles/global.css'
 const { pageName }  = Astro.props;
 ---
 <div id="content-wrapper">
-  <Header currentPage = {pageName} />
+  <main>
+    <Header currentPage = {pageName} />
     <slot />  
+  </main>
   <Footer />
 </div>
 
+<style>
+  #content-wrapper{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+</style>
