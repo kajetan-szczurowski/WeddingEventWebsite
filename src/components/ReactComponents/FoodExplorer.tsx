@@ -2,6 +2,7 @@ import { useState } from 'react';
 import ListItems from './ListItems';
 
 export default function FoodExplorer({foods, defaultFood = ''}: props) {
+  console.log(foods)
   const [currentFoodLabel, setCurrentFoodLabel] = useState(defaultFood);
   const foodLabels = foods.map(dish => dish.label);
   const currentFood = foods.find(dish => dish.label == currentFoodLabel)?.food ?? [];
@@ -11,7 +12,7 @@ export default function FoodExplorer({foods, defaultFood = ''}: props) {
         <section className = 'food-explorer-header-wrapper'>
             <div className = 'food-explorer-navbar'>
                 {foodLabels.map(label => {return(
-                    <button className = {getButtonClass(label)} onClick = {() => setCurrentFoodLabel(label)}>{label}</button>
+                    <button key = {label} className = {getButtonClass(label)} onClick = {() => setCurrentFoodLabel(label)}>{label}</button>
                 )})}
             </div>
         </section>
@@ -31,6 +32,11 @@ export default function FoodExplorer({foods, defaultFood = ''}: props) {
 
 
 type props = {
-    foods: {label: string, food: string[]}[],
+    foods: {label: string, food: dishType[]}[],
     defaultFood?: string
+}
+
+type dishType = {
+  label: string,
+  description: string
 }

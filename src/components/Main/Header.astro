@@ -4,29 +4,40 @@ import SmallScreenNavbar from './SmallScreenNavbar.astro';
 const activeColor = "#9A0303";
 const textColor = "black";
 
+// const pages = [
+// {label: "Strona główna", url : ''}, {label: "Plan uroczystości", url : 'agenda'}, 
+// {label: "Dojazd", url : 'arrival'}, {label: "Usadzenie Gości", url : 'chairs'},
+// {label: "Menu", url : 'menu'}, {label: "Kontakt", url : 'contact'}, {label: "Prezenty", url : 'gifts'},
+// ];
+
 const pages = [
-{label: "Strona główna", url : ''}, {label: "Plan uroczystości", url : 'agenda'}, 
-{label: "Dojazd", url : 'arrival'}, {label: "Usadzenie Gości", url : 'chairs'},
-{label: "Menu", url : 'menu'}, {label: "Kontakt", url : 'contact'}, {label: "Prezenty", url : 'gifts'},
+{label: "Domowa", url : ''}, {label: "Plan", url : 'agenda'}, 
+{label: "Dojazd", url : 'arrival'},
+{label: "Menu", url : 'menu-dishes'}, {label: "Kontakt", url : 'contact'}, {label: "Prezenty", url : 'gifts'},
 ];
 
 const { currentPage } = Astro.props;
+
+function isListedPageCurrentlyOpened(listedPage: string){
+  if (listedPage === '' && currentPage === 'index') return true;
+  return listedPage.includes(currentPage);
+}
 
 //{currentPage !== page.url ? <div class = 'roof' /> : <div/>}
 ---
 
 <header>
 
-    <div class = 'big-roof'>
-    </div>
-
+    <!-- <div class = 'big-roof'> -->
+    <!-- </div> -->
+      <div class = 'logo'>Marcinowice, 19.10.2024</div>
       <ul class = 'big-screen-list'>
 
           {pages.map((page) => ( 
             <li class = 'navigator-element'>
-              <div class = 'interactive-roof' />
-              {currentPage === page.url && <span class = 'current-span'>{page.label}</span>}
-              {currentPage !== page.url && <a href={`/${page.url}`}> {page.label} </a>}
+              {/* <div class = 'interactive-roof' /> */}
+              {isListedPageCurrentlyOpened(page.url) && <span class = 'current-span'>{page.label}</span>}
+              {!isListedPageCurrentlyOpened(page.url) && <a href={`/${page.url}`}> {page.label} </a>}
             </li>
           ))}
 
@@ -48,14 +59,14 @@ const { currentPage } = Astro.props;
 
 <section class = 'small-navbar'><SmallScreenNavbar pages = {pages} /></section>
 
-<script>
+<!-- <script>
 
     const urls = document.querySelectorAll('li');
     urls.forEach(url => {
         url.onmouseover = () => {url.classList.add('active-parent')};
         url.onmouseout = () => {url.classList.remove('active-parent')};
     })
-</script>
+</script> -->
 
 <style define:vars={{ activeColor, textColor }}>
 
@@ -69,12 +80,16 @@ const { currentPage } = Astro.props;
 
     header{
   margin-bottom: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
   width: 100%;
+  height: 50px;
   /* position: sticky; */
   /* top: 0; */
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    align-items: center;
     }
 
     button{
@@ -106,11 +121,20 @@ const { currentPage } = Astro.props;
   display: flex;
   /* justify-content: space-evenly; */
   justify-content: center;
+  grid-column: 5 / span 4;
 }
+
+  .logo{
+  grid-column: 2 / span 2;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: bold;
+  height: fit-content;
+  }
 
   li a, span{
     font-weight: bold;
-    font-size: 20px;
+    font-size: 14px;
     text-transform: uppercase;
   }
 
@@ -120,6 +144,10 @@ const { currentPage } = Astro.props;
     width: fit-content;
     height: fit-content;
     z-index: 10;
+  }
+
+  a:hover{
+    color: var(--activeColor);
   }
 
   span{
@@ -153,9 +181,7 @@ const { currentPage } = Astro.props;
     background-color: var(--activeColor);
   }
 
-  .active-parent a, .active-parent span{
-    color: white;
-  }
+
 
 
   #burger-button{
@@ -177,6 +203,10 @@ const { currentPage } = Astro.props;
 
   .navigator-element:last-child{
     margin-right: 0;
+  }
+
+  .hamburger-menu{
+    grid-column: 1 / span 1;
   }
 
 
@@ -211,6 +241,9 @@ const { currentPage } = Astro.props;
     display: block;
     }
 
+    .logo{
+      display: none;
+    }
   }
   
 

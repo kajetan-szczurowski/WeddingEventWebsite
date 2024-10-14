@@ -37,13 +37,14 @@ html {
   
   .dishes{
     list-style-type: none;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 5rem;
+    padding-right: 10rem;
+    max-width: 1000px;
     overflow: hidden;
     transition: height 1.5s ease-out;
   }
 
-  .dishes li, .food-explorer-button{
+  .listed-item-label, .food-explorer-button{
     font-weight: bold;
     font-size: 18px;
   }
@@ -72,7 +73,7 @@ html {
 
   .dish-expand-pointer{
     font-weight: bold;
-    transition: transform 1.5s ease-out;
+    transition: transform 0.5s ease-out;
   }
 
  
@@ -85,14 +86,17 @@ html {
   .food-explorer-navbar{
     display: flex;
     width: 50%;
+    max-width: 550px;
     justify-content: space-evenly;
+    margin-left: 3rem;
+    /* align-items: flex-start; */
     /* border-bottom: 1px solid black; */
   }
 
   .food-explorer-header-wrapper{
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .food-explorer-button:hover{

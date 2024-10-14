@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import ListItems from './ListItems';
 
-export default function FoodGroup({label, food, expandedOnDefault, containerHeight}: props) {
+export default function FoodGroup({ foodGroup, expandedOnDefault, containerHeight}: props) {
   const ulRef = useRef<HTMLUListElement>(null);
   const h2Ref = useRef<HTMLHeadingElement>(null);
   const pointerRef = useRef<HTMLDivElement>(null);
@@ -9,12 +9,12 @@ export default function FoodGroup({label, food, expandedOnDefault, containerHeig
   return (
     <>
             <h2 ref = {h2Ref} onClick = {handleExpand} className = {h2ClassName}>
-                {label}
+                {foodGroup.label}
                 <div ref = {pointerRef} className = 'dish-expand-pointer' style = {expandedOnDefault? {'transform': 'rotate(180deg)'}: {}}>▼</div>
             </h2>
 
         <ul ref = {ulRef} className = {`dishes`} style = {expandedOnDefault? {'height': containerHeight ?? 'auto'} : {'height': '0'}}>
-          <ListItems items = {food}/>
+          <ListItems items = {foodGroup.food}/>
         </ul>
     </>
   )
@@ -32,8 +32,12 @@ export default function FoodGroup({label, food, expandedOnDefault, containerHeig
 }
 
 type props = { 
-    label: string,
-    food: string[],
+    foodGroup: {label: string, food: dishType[]},
     expandedOnDefault?: boolean,
     containerHeight?: string
+}
+
+type dishType = {
+  label: string,
+  description: string
 }

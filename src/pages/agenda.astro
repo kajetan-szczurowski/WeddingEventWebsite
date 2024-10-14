@@ -6,10 +6,21 @@ import PlaceholderCrew from "./placeholderCrew.astro";
 import PlaceholderTime from "./placeholderTime.astro";
 
 const agendaItems = [
-	{label: 'Ślub humanistyczny', description: 'Kopytko', time: '14:30'},
-	{label: 'Obiad', description: 'Kopytkoxxd', time: '15:20'},
-	{label: 'Ślub humanistyczny', description: 'Kopytko', time: '14:30'},
-	{label: 'Obiad', description: 'Kopytkoxxd', time: '15:20'},
+	{label: 'Ślub humanistyczny',
+	 description: `Jeśli pogoda na to pozwoli, spotkamy się w ogrodzie sali, więc przygotujcie coś ciepłego do ubrania!`, time: '14:30'},
+
+	{label: 'Rozpoczęcie wesela', description: 'Wejście na sale, pierwszy toast, składanie życzeń.', time: '15:00'},
+	{label: 'Obiad', description: 'Zupa krem z dyni, kotlet z soczewicy, ziemniaki, surówki.', time: '15:20'},
+	{label: 'Pierwszy taniec', description: `A następnie zaproszenie gości na pierwszy blok taneczny.`, time: '16:00'},
+
+	{label: 'Tort', description: '', time: '16:30'},
+	{label: 'Zabawa weselna', description: 'Bloki taneczne, belgijka, zdjęcia.', time: '16:30'},
+
+	{label: 'Ciepłe danie', description: 'Zupa gulaszowa z batatem i dynią', time: '19:00'},
+	{label: 'Ciepłe danie', description: 'Gołąbki z kaszą lub ryżem i grzybami, sos śmietanowy z grzybami.', time: '21:00'},
+	{label: 'Ciepłe danie', description: 'Flaczki z boczniaków.', time: '23:00'},
+	{label: 'Oczepiny', description: 'Zapraszamy panny i kawalerów. Na końcu wszyscy nauczymy się tańczyć taniec dworski kontredans.', time: '00:00'},
+	{label: 'Ciepłe danie', description: 'Krokiety z barszczem.', time: '01:00'},
 ];
 
 let parity = true;
@@ -82,7 +93,7 @@ let parity = true;
 	.agenda-subtext{
 		text-align: center;
 		margin-bottom: 4rem;
-		font-size: 24px;
+		font-size: 18px;
 		padding: 1rem;
 
 	}

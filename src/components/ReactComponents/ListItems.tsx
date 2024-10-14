@@ -3,9 +3,11 @@ export default function ListItems({items}: props) {
     <>
         {items.map(oneItem => {
             return(
-                  <div className = 'listed-item'>
-                    <li key = {oneItem}>{oneItem}</li>
-                    {/* <div className = 'gowno'>Twoja stara przeszła simsy</div> */}
+                  <div className = 'listed-item' key = {oneItem.label}>
+                    <li>
+                      <div className = 'listed-item-label'> {(oneItem.label.charAt(0) === '@')? '': oneItem.label}</div>
+                      <div className = 'listed-item-description'>{oneItem.description}</div>
+                    </li>
                   </div>
                 )
         })}
@@ -14,5 +16,5 @@ export default function ListItems({items}: props) {
 }
 
 type props = {
-    items: string[]
+    items: {label: string, description: string}[]
 }

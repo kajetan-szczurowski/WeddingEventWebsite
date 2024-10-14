@@ -15,64 +15,61 @@ export function getStaticPaths() {
 
 const { menuSection } = Astro.params;
 
-const drinks = [{label: 'Drinki', food: [
-'Jestodpowiedź',
-'Ja to nie umiem, ale polecam Krystianai',
-'#!$%@?, szukaj krystiana',
-'argh.jpg',
-'wystarczy, że hehe obejrzysz',
-'idź się #!$%@?ć, bo studia hehe'
-]}];
+const drinks = {label: 'Drinki', food: [
+{label: 'Florida Summer', description: 'Wódka, sok ananasowy, sok pomarańczowy, grenadyna'},
+{label: "William's Rainbow", description: 'Wódka, blue curaçao, grenadyna, Sprite'},
+{label: "Bora Bora", description: 'Wódka, blue curaçao, sok pomarańczowy, Sprite'},
+{label: 'American Fizz (bezalkoholowy)', description: 'Grenadyna, sok pomarańczowy, Sprite, sok z cytryny'},
+{label: 'Crazy Driver (bezalkoholowy)', description: 'Grenadyna, sok pomarańczowy'},
+{label: "Blue Lagoon", description: 'Wódka, blue curaçao, Sprite, sok z cytryny'},
+{label: "Super Bowl", description: 'Wódka, grenadyna, Sprite, sok z cytryny'},
+{label: "Green Bay", description: 'Biały rum, blue curaçao, sok pomarańczowy, sok ananasowy'},
+{label: "Costa Messa", description: 'Wódka, blue curaçao, grenadyna, sok pomarańczowy, sok z cytryny'},
+{label: "Palm Beach", description: 'Wódka, blue curaçao, sok pomarańczowy, sok z cytryny'},
+{label: "Red Royal", description: 'Biały rum, grenadyna, Sprite, sok z cytryny'},
+{label: "Shoty ananasowe", description: 'Biały rum, grenadyna, sok ananasowy'}
+]};
 
 const snacks = {label: 'Zimna płyta', food: [
-'Deska serów',
-'Pasztet z białej fasoli',
-'Rolada szpinakowa z serkiem biały i warzywami',
-'Sałatka mafijna z burakiem',
-'Sałatka tortellini z ananasem',
-'Sałatka Cezar z tofu',
-'Jajka w sosie tatarskim',
-'Pomidory z mozarellą',
-'Seleryba po grecku',
-'Śledzie po kaszubsku z boczniaków',
-'Wegański smalec'
+{label: '@Dania', description: 'Seleryba po grecku 🌿🌿, śledzie po kaszubsku z boczniaków 🌿🌿, rolada szpinakowa z serkiem biały i warzywami'},
+{label: '@Sałatki', description: 'Mafijna 🌿🌿, tortellini z ananasem, Cezar'}, 
+{label: '@Przekąski', description: 'Deska serów, pasztet z białej fasoli, jajka w sosie tatarskim, pomidory z mozarellą, wegański smalec 🌿🌿'} 
 ]};
 
 
-const dishes = {label: 'Gorące dania', food: ['Zupa krem z dyni z nutą imbiru', 'Kotlet z soczewicy na kapuście z pomidorami', 
-	'Purée ziemniaczane', 'Buraczki z cebulką', 'Czerwona kapusta z majonezem', 'Surówka chińska z sezamem', 
-	'Zupa gulaszowa z batatem i dynią', 'Gołąbki z kaszą lub ryżem i grzybami, sos śmietanowy z grzybami.',
-	'Flaczki z boczniaków', 'Krokiety z barszczem']
+const dishes = {label: 'Gorące dania', food: [
+    {label: 'Zupa 🌿🌿', description: 'Krem z dyni z nutą imbiru'}, 
+    {label: 'Drugie danie 🌿', description: 'Kotlet z soczewicy na kapuście z pomidorami'}, 
+	{label: 'Dodatki', description: 'Purée ziemniaczane, Buraczki z cebulką 🌿🌿, czerwona kapusta z majonezem, surówka chińska z sezamem 🌿🌿'}, 
+	{label: 'I ciepła kolacja 🌿🌿', description: 'Zupa gulaszowa z batatem i dynią'}, 
+    {label: 'II ciepła kolacja 🌿', description: 'Gołąbki z kaszą lub ryżem i grzybami, sos śmietanowy z grzybami.'},
+	{label: 'III ciepła kolacja 🌿🌿', description: 'Flaczki z boczniaków'}, 
+    {label: 'IV ciepła kolacja 🌿', description: 'Krokiety z barszczem'}]
 };
 
-const sweets = {label: 'Słodki stół', food: ['Bezy',
-'Ptysie z kremem karpatkowym i owocami',
-'Tiramisu',
-'Malinowa chmurka',
-'Tartaletka kawowa',
-'Tartaletka cytrynowa',
-'Cakesicles',
-'Monoporcje czekoladowe',
-'Monoporcje słony karmel',
-'Monoporcje owoce leśne',
-'Malinowy król',
-'Karpatka',
-'Miodownik',
-'Sernik z mango curdem',
-'Jabłecznik',
-'Rurki z kremem'
+const sweets = {label: 'Słodki stół', food: [
+{label: 'Ciasta', description: 'Malinowy król, karpatka, miodownik, sernik z mango curdem, jabłecznik'},
+{label: 'Monoporcje', description: 'Czekolada, słony karmel, owoce leśne'},
+{label: 'Pucharki', description: 'Tiramisu, malinowa chmurka'},
+{label: 'Tartaletki', description: 'Kawowa, cytrynowa'},
+{label: 'Ptysie', description: 'Krem karpatkowy i owoce'},
+{label: 'Desery', description: 'Bezy, cakesicles, rurki z kremem'}
 ]};
 
 const containersHeigths = {
-    'dishes': '600px',
-    'snacks': '660px',
-    'sweets': '960px'
+    'dishes': 'auto',
+    'snacks': 'auto',
+    'sweets': 'auto'
+    // 'dishes': '600px',
+    // 'snacks': '660px',
+    // 'sweets': '960px'
 }
 
 const dishesLabels = {
     'dishes': 'Gorące dania',
     'snacks': 'Zimna płyta',
-    'sweets': 'Słodki stół'
+    'sweets': 'Słodki stół',
+    'drinks': 'Drinki'
 }
 
 
@@ -81,15 +78,15 @@ const dishesLabels = {
 	<Page pageName = 'menu'>
         <article class = 'small-screen-menus'>
 
-            <FoodGroup label = {dishes.label} food = {dishes.food} expandedOnDefault = {menuSection === 'dishes'} containerHeight = {containersHeigths['dishes']} client:visible />
-            <FoodGroup label = {snacks.label} food = {snacks.food} expandedOnDefault = {menuSection === 'snacks'} containerHeight = {containersHeigths['snacks']} client:visible />
-            <FoodGroup label = {sweets.label} food = {sweets.food} expandedOnDefault = {menuSection === 'sweets'} containerHeight = {containersHeigths['sweets']} client:visible />
-            <!-- <FoodGroup label = {drinks.label} food = {drinks.food} expandedOnDefault = {menuSection === 'drinks'} client:load /> -->
+            <FoodGroup foodGroup = {dishes} expandedOnDefault = {menuSection === 'dishes'} containerHeight = {containersHeigths['dishes']} client:visible />
+            <FoodGroup foodGroup = {snacks} expandedOnDefault = {menuSection === 'snacks'} containerHeight = {containersHeigths['snacks']} client:visible />
+            <FoodGroup foodGroup = {sweets} expandedOnDefault = {menuSection === 'sweets'} containerHeight = {containersHeigths['sweets']} client:visible />
+            <FoodGroup foodGroup = {drinks} expandedOnDefault = {menuSection === 'drinks'} client:visible />
 
         </article>
 
         <article class = 'big-screen-menus'>
-            <FoodExplorer foods = {[dishes, snacks, sweets]} defaultFood = {dishesLabels[menuSection]} client:visible/>
+            <FoodExplorer foods = {[dishes, snacks, sweets, drinks]} defaultFood = {dishesLabels[menuSection]} client:visible/>
         </article>
         
     </Page>
