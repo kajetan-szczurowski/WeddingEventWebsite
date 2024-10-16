@@ -31,29 +31,39 @@ const drinks = {label: 'Drinki', food: [
 ]};
 
 const snacks = {label: 'Zimna płyta', food: [
-{label: '@Dania', description: 'Seleryba po grecku 🌿🌿, śledzie po kaszubsku z boczniaków 🌿🌿, rolada szpinakowa z serkiem biały i warzywami'},
-{label: '@Sałatki', description: 'Mafijna 🌿🌿, tortellini z ananasem, Cezar'}, 
-{label: '@Przekąski', description: 'Deska serów, pasztet z białej fasoli, jajka w sosie tatarskim, pomidory z mozarellą, wegański smalec 🌿🌿'} 
+{label: '@Sałatki', description: 'Rolada szpinakowa z serkiem białym i warzywami, sałatka tortellini z ananasem, sałatka Cezar'}, 
+{label: '@Przekąski', description: 'Deska serów, pasztet z białej fasoli, jajka w sosie tatarskim, pomidory z mozarellą'}, 
+{label: '#Wegańskie', description: 'Seleryba po grecku, śledzie po kaszubsku z boczniaków, sałatka Mafijna, wegański smalec'} 
 ]};
 
 
 const dishes = {label: 'Gorące dania', food: [
-    {label: 'Zupa 🌿🌿', description: 'Krem z dyni z nutą imbiru'}, 
-    {label: 'Drugie danie 🌿', description: 'Kotlet z soczewicy na kapuście z pomidorami'}, 
-	{label: 'Dodatki', description: 'Purée ziemniaczane, Buraczki z cebulką 🌿🌿, czerwona kapusta z majonezem, surówka chińska z sezamem 🌿🌿'}, 
-	{label: 'I ciepła kolacja 🌿🌿', description: 'Zupa gulaszowa z batatem i dynią'}, 
-    {label: 'II ciepła kolacja 🌿', description: 'Gołąbki z kaszą lub ryżem i grzybami, sos śmietanowy z grzybami.'},
-	{label: 'III ciepła kolacja 🌿🌿', description: 'Flaczki z boczniaków'}, 
-    {label: 'IV ciepła kolacja 🌿', description: 'Krokiety z barszczem'}]
+    {label: 'Zupa', description: 'Krem z dyni z nutą imbiru'}, 
+    {label: 'Drugie danie', description: 'Kotlet z soczewicy na kapuście z pomidorami z ziemniakami'}, 
+	{label: 'Surówki', description: 'Buraczki z cebulką, czerwona kapusta z majonezem, surówka chińska z sezamem'}, 
+	{label: 'I ciepła kolacja', description: 'Zupa gulaszowa z batatem i dynią'}, 
+    {label: 'II ciepła kolacja', description: 'Gołąbki z kaszą lub ryżem i grzybami, sos śmietanowy z grzybami.'},
+	{label: 'III ciepła kolacja', description: 'Flaczki z boczniaków'}, 
+    {label: 'IV ciepła kolacja', description: 'Krokiety z barszczem'}]
 };
+
+// const dishes = {label: 'Gorące dania', food: [
+//     {label: 'Zupa 🌿🌿', description: 'Krem z dyni z nutą imbiru'}, 
+//     {label: 'Drugie danie 🌿', description: 'Kotlet z soczewicy na kapuście z pomidorami z ziemniakami'}, 
+// 	{label: 'Surówki', description: 'Buraczki z cebulką 🌿🌿, czerwona kapusta z majonezem, surówka chińska z sezamem 🌿🌿'}, 
+// 	{label: 'I ciepła kolacja 🌿🌿', description: 'Zupa gulaszowa z batatem i dynią'}, 
+//     {label: 'II ciepła kolacja 🌿', description: 'Gołąbki z kaszą lub ryżem i grzybami, sos śmietanowy z grzybami.'},
+// 	{label: 'III ciepła kolacja 🌿🌿', description: 'Flaczki z boczniaków'}, 
+//     {label: 'IV ciepła kolacja 🌿', description: 'Krokiety z barszczem'}]
+// };
 
 const sweets = {label: 'Słodki stół', food: [
 {label: 'Ciasta', description: 'Malinowy król, karpatka, miodownik, sernik z mango curdem, jabłecznik'},
-{label: 'Monoporcje', description: 'Czekolada, słony karmel, owoce leśne'},
+{label: 'Monoporcje', description: 'Czekolada, słony karmel, owoce leśne, bezy, cakesicles, rurki z kremem'},
 {label: 'Pucharki', description: 'Tiramisu, malinowa chmurka'},
 {label: 'Tartaletki', description: 'Kawowa, cytrynowa'},
 {label: 'Ptysie', description: 'Krem karpatkowy i owoce'},
-{label: 'Desery', description: 'Bezy, cakesicles, rurki z kremem'}
+{label: '#Wegańskie', description: 'Niesernik z nerkowców, szarlotka'} 
 ]};
 
 const containersHeigths = {
@@ -74,7 +84,7 @@ const dishesLabels = {
 
 
 ---
-<Layout title="Welcome to Astro.">
+<Layout title="Menu 	&#128061 &#x1F496; 	&#128023">
 	<Page pageName = 'menu'>
         <article class = 'small-screen-menus'>
 

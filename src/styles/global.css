@@ -109,6 +109,13 @@ html {
     border-bottom: 2px solid #7d0000;;
   }
 
+  .vegan-leaf-symbol{
+    width: 20px;
+    height: auto;
+    display: inline;
+    margin-left: 0.5rem;
+  }
+
 
 
   /* Countdown styling */
