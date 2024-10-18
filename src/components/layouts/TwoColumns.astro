@@ -1,6 +1,10 @@
 ---
+
+const {alignTop } = Astro.props;
+
+const divClassName = alignTop? 'top-aligned' : '';
 ---
-<div>
+<div class = {divClassName}>
     <slot name = 'primary-data'></slot>
     <slot ></slot>
 </div>
@@ -11,6 +15,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .top-aligned{
+        align-items: flex-start;
     }
 
     div:first-child{

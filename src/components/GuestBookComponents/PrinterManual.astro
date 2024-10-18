@@ -1,0 +1,188 @@
+---
+import printer from '../../images/Frame4.png'
+import manual3 from '../../images/manualSteps/manual-3.png'
+import manual4 from '../../images/manualSteps/manual-4.png'
+
+import manual5 from '../../images/manualSteps/manual-5.png'
+import manual6a from '../../images/manualSteps/manual-6a.png'
+
+import manual8 from '../../images/manualSteps/manual-8.png'
+import manual6b from '../../images/manualSteps/manual-6b.png'
+
+import ImageImageTwoColumns from '../layouts/ImageImageTwoColumns.astro';
+import { Image } from "astro:assets";
+
+---
+
+<article>
+    <h2>Instrukcja obsługi drukarki do zdjęć</h2>
+
+        <section>
+            <div class = 'manual-pointer'><div class = 'manual-bullet'>1</div></div>
+            <div class = 'manual-text'>Odblokuj przygotowany przez nas biały telefon Xiaomi. Wejdź do aparatu i zrób sobie zdjęcie!</div>
+        </section>
+
+        <br/>
+
+        <section>
+            <div class = 'manual-pointer'><div class = 'manual-bullet'>2</div></div>
+            <div class = 'manual-text'>Sprawdź czy na drukarce świeci dioda startu (patrz rysunek poniżej). Jeśli nie, przytrzymaj przycisk włączenia.</div>
+        </section>
+
+        <br/>
+
+
+        <Image class = 'printer-view' src = {printer} alt = 'drukarka z opisem przycisków i lampek'/>
+
+        <br/>
+
+        <section>
+            <div class = 'manual-pointer'><div class = 'manual-bullet'>3</div></div>
+            <div class = 'manual-text'>Odblokuj biały telefon i uruchom aplikację Xiaomi Home.</div>
+        </section>
+
+        <br/>
+
+        <section>
+            <div class = 'manual-pointer'><div class = 'manual-bullet'>4</div></div>
+            <div class = 'manual-text'>Kliknij w kafelek <strong>Drukarka</strong><em>Prestige</em>.</div>
+        </section>
+
+        <br/>
+
+        <section>
+            <div class = 'manual-pointer'><div class = 'manual-bullet'>5</div></div>
+            <div class = 'manual-text'>Jeśli pojawi się napis <em>Drukarka niepodłączona</em>, kliknij przycisk <strong>Podłącz</strong>.
+            Po udanym połączeniu zobaczysz napisz <em>Czuwanie</em>. Jeśli nie możesz się połączyć, skontaktuj się ze świadkami.</div>
+        </section>
+
+        <br/>
+        <section>
+            <div class = 'manual-pointer'><div class = 'manual-bullet'>6</div></div>
+            <div class = 'manual-text'>Kliknij w kafelek <em>Drukuj zdjęcie</em>, a następnie wybierz swoje zdjęcie z otwartej galerii telefonu.</div>
+        </section>
+
+        <br/>
+        <section>
+            <div class = 'manual-pointer'><div class = 'manual-bullet'>7</div></div>
+            <div class = 'manual-text'>Kliknij przycisk <em>Kopie</em> i wybierz cyfrę <strong>2</strong>. (Jedno zdjęcie do księgi gości, drugie dla Ciebie).</div>
+        </section>
+
+        <br/>
+        <section>
+            <div class = 'manual-pointer'><div class = 'manual-bullet'>8</div></div>
+            <div class = 'manual-text'>Naciśnij przycisk z ikoną drukarki.</div>
+        </section>
+
+        <br/>
+        <section>
+            <div class = 'manual-pointer'><div class = 'manual-bullet'>9</div></div>
+            <div class = 'manual-text'>Jeśli wyskoczy informacja o niepodłączonej drukarce, kliknij przycisk <em>Połącz</em>.</div>
+        </section>
+
+
+        <br/>
+        <section>
+            <div class = 'manual-pointer'><div class = 'manual-bullet'>10</div></div>
+            <div class = 'manual-text'>Jeśli wyskoczy informacja o braku papieru, poproś świadków o pomoc lub
+                 <a href = "https://www.youtube.com/watch?v=KEq5cWkOj8A" target="_blank">obejrzyj ten film</a>. </div>
+        </section>
+
+        <br/>
+        <section>
+            <div class = 'manual-pointer'><div class = 'manual-bullet'>11</div></div>
+            <div class = 'manual-text'>Nie usuwaj swojego zdjęcia z galerii telefonu. Zostanie pamiątką weselną!</div>
+        </section>
+        <br/>
+        <br/>
+
+        <br/>
+        <section>
+            <ImageImageTwoColumns>
+                <Image class = 'manual-step-img' src = {manual3} alt = "" slot = 'image1'/>
+                <Image class = 'manual-step-img' src = {manual4} alt = "" slot = 'image2'/>
+            <ImageImageTwoColumns/>
+        </section>
+
+        <br/>
+        <section>
+            <ImageImageTwoColumns>
+                <Image class = 'manual-step-img' src = {manual5} alt = "" slot = 'image1'/>
+                <Image class = 'manual-step-img' src = {manual6a} alt = "" slot = 'image2'/>
+            <ImageImageTwoColumns/>
+        </section>
+
+        <br/>
+        <section>
+            <ImageImageTwoColumns>
+                <Image class = 'manual-step-img' src = {manual6b} alt = "" slot = 'image1'/>
+                <Image class = 'manual-step-img' src = {manual8} alt = "" slot = 'image2'/>
+            <ImageImageTwoColumns/>
+        </section>
+
+</article>
+
+<style>
+    article{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h2{
+        text-align: center;
+    }
+
+    section{
+        display: flex;
+        align-items: center;
+        width: 60vw;
+        margin: auto 0;
+        justify-content: space-evenly;
+        /* display: grid; */
+        /* grid-template-columns: 1fr 3fr; */
+    }
+
+    .manual-pointer{
+        width: 30px;
+        height: 30px;
+        /* aspect-ratio: 1; */
+        /* height: 50px; */
+        background-color: #7d0000;
+        color: white;
+        /* text-align: center; */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+
+    }
+
+
+    .manual-bullet{
+        height:fit-content;
+    }
+
+    .printer-view{
+        /* aspect-ratio: 1; */
+        height: auto;
+        width: 30%;
+    }
+
+    .manual-text{
+        width: 100%;
+        max-width: calc(60% - 30px - 1rem);
+    }
+
+    .manual-step-img{
+        width: 20vw;
+        height: auto;
+        max-width: 500px;
+    }
+
+    .manual-step-img:nth-child(odd){
+        margin-right: 5vw;
+    }
+</style>

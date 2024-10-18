@@ -1,0 +1,94 @@
+---
+import Layout from "../layouts/Layout.astro"
+import Page from "../components/Main/Page.astro"
+import GuestBookInput from "../components/GuestBookComponents/GuestBookInput.astro";
+import PrinterManual from "../components/GuestBookComponents/PrinterManual.astro";
+import Kopernik from "../images/KajetanKopernik.webp"
+
+export interface GuestBookInputInterface{
+    layout : 'firstImage' | 'firstText',
+    imageData : ImageMetadata,
+    label: string,
+    text: string[],
+    imageAltText: string
+}
+
+type input = GuestBookInputInterface;
+
+const firstText = [`
+Według nas najważniejszym elementem wesela jest interackcja z gośćmi. Dlatego mamy nadzieję, że wpiszecie się do naszej księgi gości!
+`,'<br/>', `
+Przygotowaliśmy dla was cały zestaw akcesoriów w tym naklejki i cienkopisy. Więc liczymy na kreatywność przy wpisywaniu się.
+`];
+
+const secondText = [`
+W naszej księdze gości chcemy też zobaczyć wasze twarze!`, '<br/>', `
+Przy księdze gości znajdziecie przygotowany telefon Xiaomi oraz drukarkę do zdjęć.
+`, '<br/>', `
+Najpierw robicie sobie zdjęciem aparatem telefonu, a potem drukujecie w dwóch kopiach. Jedną wklejacie do księgi
+obok swojego wpisu. Drugie zdjęcie jest dla was!
+`];
+
+const thirdText = [`
+Oprócz tego, że zobaczymy wasze zdjęcia i przeczytamy wasze wpisy, chcemy jeszcze was usłyszeć!
+`, '<br/>', `
+Dzięki Telefonu Życzeń, możecie się nam nagrać. Wystarczy, że podniesiecie słuchawkę, wysłuchacie naszej wiadomości
+i powiecie to, co chcecie nam przekazać.
+`];
+
+
+const firstInput : input = {
+    layout: 'firstImage',
+    imageData: Kopernik,
+    imageAltText: 'Drukowana księga gości.',
+    label: 'Drukowana księga',
+    text: firstText
+}
+
+const secondInput : input = {
+    layout: 'firstText',
+    imageData: Kopernik,
+    imageAltText: 'Drukarka do zdjęć.',
+    label: 'Drukarka do zdjęć',
+    text: secondText
+}
+
+const thirdInput : input = {
+    layout: 'firstImage',
+    imageData: Kopernik,
+    imageAltText: 'Telefon w formie księgi gości.',
+    label: 'Audio księga gości',
+    text: thirdText
+}
+
+
+
+---
+
+<Layout title="Księga gości &#128061 &#x1F496; &#128023">
+	<Page pageName = 'guestbook'>
+        <h1>Księga gości</h1>
+
+        <main>
+
+            <GuestBookInput {...firstInput} />
+            <GuestBookInput {...secondInput} />
+            <GuestBookInput {...thirdInput} />
+
+            <PrinterManual />
+        </main>
+    </Page>
+</Layout>
+
+<style>
+
+h1{
+    text-align: center;
+    /* margin-left: 5%; */
+    margin-bottom: 5rem;
+    font-size: 24px;
+}
+
+
+
+</style>

@@ -1,8 +1,10 @@
 ---
 import TwoColumns from './TwoColumns.astro';
+const {alignTop } = Astro.props;
+
 
 ---
-<TwoColumns>
+<TwoColumns alignTop = {alignTop}>
     <slot name = 'image'></slot>
     <slot name = 'text'></slot>
 </TwoColumns>

@@ -1,0 +1,66 @@
+---
+
+const navigationPoints = [
+    {label: 'plan', description:'Co dla ciebie przygotowaliśmy?', url: '/agenda'},
+    {label: 'dojazd', description:'Jak dostać się na miejsce imprezy?', url: '/arrival'},
+    {label: 'księga gości', description:'Jak zostawić po sobie pamiątkę?', url: '/guestbook'},
+    {label: 'menu', description:'Co dobrego będziemy jeść?', url: '/menu-dishes'},
+    {label: 'prezenty', description:'Jeśli interesuje cię lista życzeń pary młodej.', url: '/gifts'},
+    {label: 'galeria', description:'Jeśli masz jakieś zdjęcia z imprezy i chcesz się nimi podzielić.', url: 'https://drive.google.com/folderview?id=1t0DmvX_zDdnftCRFkguL6FeYheXrt2eH'},
+]
+
+---
+
+<div class = 'big-navbar-wrapper'>
+    <ul>
+
+        {navigationPoints.map(page => 
+        <a href = {page.url}>
+            <div>
+                <h2>{page.label}</h2>
+                <div>{page.description}</div>
+            </div>
+        </a>
+        )}
+
+    </ul>
+
+<div/>
+
+<style>
+    ul{
+        width: 60%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 1rem;
+        padding: 1rem;
+    }
+
+    h2{
+        text-transform: uppercase;
+        font-size: 14px;
+    }
+
+    a{
+        max-width: 200px;
+        text-decoration: none;
+        color: black;
+    }
+
+    a:hover{
+        color: #9A0303;
+    }
+
+    .big-navbar-wrapper{
+        margin-left: 5vw;
+        margin-right: 5vw;
+        width: 90vw;
+        display: flex;
+        justify-content: flex-end;
+        border-radius: 20px;
+        background-color: rgba(0,0,0, 0.03);
+        background-color: white;
+        background-color: #f1f5f9;
+
+    }
+</style>

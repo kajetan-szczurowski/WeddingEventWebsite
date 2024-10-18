@@ -1,0 +1,43 @@
+---
+import ImageTextTwoColumns from "../layouts/ImageTextTwoColumns.astro";
+import TextImageTwoColumns from "../layouts/TextImageTwoColumns.astro";
+import { Image } from "astro:assets";
+import {type GuestBookInputInterface} from "../../pages/guestbook.astro";
+
+interface Props extends GuestBookInputInterface{};
+
+const {layout, imageData, imageAltText, label, text} = Astro.props;
+const WrapperComponent = (layout === 'firstImage')? ImageTextTwoColumns : TextImageTwoColumns;
+---
+
+<section>
+   <WrapperComponent alignTop = {true}>
+        <Image src = {imageData} alt = {imageAltText} slot = 'image'/>
+        <article slot = 'text'>
+            <h2>{label}</h2>
+            {text.map(chunk => (chunk !== '<br/>')? <div>{chunk}</div> : <br/>)}
+        </article>
+   </WrapperComponent>
+</section>
+
+<style>
+    img{
+        width: 300px;
+        height: auto;
+        border-radius: 50px;
+    }
+
+    section{
+        margin-bottom: 4rem;
+    }
+
+    article{
+        margin-left: 2rem;
+        margin-right: 2rem;
+        width: 400px;
+    }
+
+    h2{
+        margin-top: 0;
+    }
+</style>

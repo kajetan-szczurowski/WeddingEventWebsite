@@ -1,5 +1,6 @@
 ---
 import SmallScreenNavbar from './SmallScreenNavbar.astro';
+import BigScreenNavbar from './BigScreenNavbar.astro';
 
 const activeColor = "#9A0303";
 const textColor = "black";
@@ -33,13 +34,18 @@ function isListedPageCurrentlyOpened(listedPage: string){
       <div class = 'logo'>Marcinowice, 19.10.2024</div>
       <ul class = 'big-screen-list'>
 
-          {pages.map((page) => ( 
+          <!-- {pages.map((page) => ( 
             <li class = 'navigator-element'>
               {/* <div class = 'interactive-roof' /> */}
               {isListedPageCurrentlyOpened(page.url) && <span class = 'current-span'>{page.label}</span>}
               {!isListedPageCurrentlyOpened(page.url) && <a href={`/${page.url}`}> {page.label} </a>}
             </li>
-          ))}
+          ))} -->
+
+          <li class = 'navigator-element'> <a href={`/`}> strona główna </a> </li>
+          <li class = 'navigator-element' id = 'navbar-expandable-pointer'> <span> wesele </span> </li>
+          <li class = 'navigator-element'> <a href={`/contact`}> kontakt </a> </li>
+
 
         </ul>
 
@@ -58,6 +64,40 @@ function isListedPageCurrentlyOpened(listedPage: string){
 </header>
 
 <section class = 'small-navbar'><SmallScreenNavbar pages = {pages} /></section>
+<section class = 'big-navbar' id = 'expandable-navbar' style = {'display: none'}><BigScreenNavbar/></section>
+
+<script>
+  const EXPANDABLE_NAVBAR_VISIBILITY_TIME = 1000;
+  const pointer = document.getElementById('navbar-expandable-pointer');
+  const expandable = document.getElementById('expandable-navbar');
+  pointer?.addEventListener('mouseenter', handlePointerHover);
+  pointer?.addEventListener('mouseleave', handleMouseLeave);
+  expandable?.addEventListener('mouseenter', handleExpandableHover);
+  expandable?.addEventListener('mouseleave', handleMouseLeave);
+
+  let hideTimer = 0;
+
+  function handleExpandableHover(){
+    window.clearTimeout(hideTimer);
+  }
+
+  function handleMouseLeave(){
+    hideTimer = setTimeout(hideExpandable, EXPANDABLE_NAVBAR_VISIBILITY_TIME);
+  }
+
+  function handlePointerHover(){
+    window.clearTimeout(hideTimer);
+    displayExpandable();
+  }
+
+  function displayExpandable(){
+    if (expandable) expandable.style.display = 'block';
+  }
+
+  function hideExpandable(){
+    if (expandable) expandable.style.display = 'none';
+  }
+</script>
 
 <!-- <script>
 
@@ -69,6 +109,13 @@ function isListedPageCurrentlyOpened(listedPage: string){
 </script> -->
 
 <style define:vars={{ activeColor, textColor }}>
+
+  .big-navbar{
+    position: absolute;
+    top: 35px;
+    z-index: 10;
+    left: 0;
+  }
 
   .small-navbar{
     display: none;
@@ -151,7 +198,7 @@ function isListedPageCurrentlyOpened(listedPage: string){
   }
 
   span{
-    color: var(--activeColor);
+    /* color: var(--activeColor); */
     /* text-decoration: underline; */
     z-index: 10;
   }
