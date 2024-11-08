@@ -22,7 +22,7 @@ The project assumed that the website would be made in a minimal style. White bac
 
 ## Tech Stack
 
-The website was created in Astro, most of its components use basic functionalities. The only exception to this rule is the countdown component. I used React JS to implement it.
+The website was created in Astro, most of its components use basic functionalities. The exceptions to this rule are countdown component and menu list. I used React JS to implement it.
 
 ## Demo version
 You can find demo version here: https://diana-kajetan.netlify.app/. 
